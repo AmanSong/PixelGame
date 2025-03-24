@@ -1,61 +1,76 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
-var direction = "none"
+var SPEED = 100
+var HEALTH = 100
+var is_attacking = false
+
+@onready var animation = $AnimatedSprite2D
+var direction = "Front_Idle"
+
+func _ready():
+	Signals.connect("attack_player", damage_taken)
+	animation.animation_finished.connect(_animation_finished)
 
 func _physics_process(delta):
-	player_movement(delta)
+	if Input.is_action_just_pressed("Slash"):
+		player_attacking()
+	elif is_attacking == false:
+		player_movement(delta)
+
+		
+func player_attacking():
+	is_attacking = true
+	
+	if direction == "Front_Idle":
+		animation.play("Attack_Down")
+		
+	if direction == "Right_Idle":
+		animation.play("Attack_Side")
+		
+	if direction == "Left_Idle":
+		$AnimatedSprite2D.flip_h = true
+		animation.play("Attack_Side")
+
+	if direction == "Back_Idle":
+		animation.play("Attack_Up")
 
 func player_movement(delta):
-	if Input.is_action_pressed("Right"):
-		velocity.x = SPEED
-		velocity.y = 0
-		direction = "right"
-		play_animation(1)
-	elif Input.is_action_pressed("Left"):
-		velocity.x = -SPEED
-		velocity.y = 0
-		direction = "left"
-		play_animation(1)
-	elif Input.is_action_pressed("Up"):
-		velocity.x = 0
-		velocity.y = -SPEED
-		direction = "up"
-		play_animation(1)
-	elif Input.is_action_pressed("Down"):
-		velocity.x = 0
-		velocity.y = SPEED
-		direction = "down"
-		play_animation(1)
-	else:
-		play_animation(0)
-		velocity.x = 0
-		velocity.y = 0
-
+	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
+	velocity = input_direction * SPEED
+	$AnimatedSprite2D.flip_h = false
 	
+	if input_direction:
+		pass
+	else:
+		animation.play(direction)
+		
+	if Input.is_action_pressed("Right"):
+		animation.play("Move_Right")
+		direction = "Right_Idle"
+		
+	if Input.is_action_pressed("Left"):
+		animation.play("Move_Left")
+		direction = "Left_Idle"
+		
+	if Input.is_action_pressed("Up"):
+		animation.play("Move_Up")
+		direction = "Back_Idle"
+		
+	if Input.is_action_pressed("Down"):
+		animation.play("Move_Down")
+		direction = "Front_Idle"
+		
 	move_and_slide()
 
-func play_animation(movement):
-	var dir = direction
-	var animation = $AnimatedSprite2D
+func _animation_finished():
+	is_attacking = false
+
+# take damage from enemies
+func damage_taken(damage):
+	HEALTH -= damage
 	
-	if dir == "right":
-		if movement == 1:
-			animation.play("Move_Right")
-		elif movement == 0:
-			animation.play("Right_Idle")
-	if dir == "left":
-		if movement == 1:
-			animation.play("Move_Left")
-		elif movement == 0:
-			animation.play("Left_Idle")
-	if dir == "up":
-		if movement == 1:
-			animation.play("Move_Up")
-		elif movement == 0:
-			animation.play("Back_Idle")
-	if dir == "down":
-		if movement == 1:
-			animation.play("Move_Down")
-		elif movement == 0:
-			animation.play("Front_Idle")
+func _on_player_hitbox_body_entered(body):
+	pass
+
+func _on_player_hitbox_body_exited(body):
+	pass

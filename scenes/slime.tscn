@@ -1,23 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfi6nxu64a2no"]
+[gd_scene load_steps=15 format=3 uid="uid://dfi6nxu64a2no"]
 
 [ext_resource type="Texture2D" uid="uid://chiq074wtnmcv" path="res://assets/sprites/GreenSlime.png" id="1_371uh"]
 [ext_resource type="Script" uid="uid://budml4ui2k3l" path="res://scenes/slime.gd" id="1_p2gj0"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_371uh"]
-atlas = ExtResource("1_371uh")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fd6lc"]
-atlas = ExtResource("1_371uh")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gstla"]
-atlas = ExtResource("1_371uh")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v5wyi"]
-atlas = ExtResource("1_371uh")
-region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0l8pv"]
 atlas = ExtResource("1_371uh")
@@ -55,23 +39,6 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_371uh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fd6lc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gstla")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v5wyi")
-}],
-"loop": true,
-"name": &"Move",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0l8pv")
 }, {
 "duration": 1.0,
@@ -105,10 +72,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_371uh"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2gj0"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_371uh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6pvg"]
+radius = 11.0454
 
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_p2gj0")
@@ -117,7 +87,9 @@ script = ExtResource("1_p2gj0")
 sprite_frames = SubResource("SpriteFrames_fd6lc")
 animation = &"Slime_Idle"
 autoplay = "Slime_Idle"
-frame_progress = 0.119561
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p2gj0")
 
 [node name="DetectArea" type="Area2D" parent="."]
 collision_layer = 3
@@ -127,8 +99,15 @@ collision_mask = 3
 scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_371uh")
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_p2gj0")
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_n6pvg")
+
+[node name="Attack_CD" type="Timer" parent="."]
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="Attack_CD" to="." method="_on_attack_cd_timeout"]
