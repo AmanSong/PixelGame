@@ -1,4 +1,4 @@
 extends Node
 
-signal player_attacks(damage:int)
-signal attack_player(damage:int)
+signal PLAYER_DAMAGED(damage: int)
+signal ENEMY_DAMAGED(damage: int)

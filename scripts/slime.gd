@@ -6,10 +6,8 @@ var attack = false
 var attack_cd = false
 var player = null
 
-var HEALTH = 50
-
 func _ready():
-	Signals.connect("player_attacks", damage_taken)
+	Signals.connect("PLAYER_DAMAGED", attack_player)
 
 func _physics_process(delta):
 	on_aggro(delta)
@@ -36,17 +34,12 @@ func _on_detect_area_body_entered(body):
 func _on_detect_area_body_exited(body):
 	player = null
 	chase_player = false
-
-# take damage from player
-func damage_taken(damage):
-	HEALTH -= damage
-	if(HEALTH <= 0):
-		self.queue_free()
 	
 # if player enters slime hitbox, attack them
 func _on_hit_box_body_entered(body):
 	if body.name == "Player":
 		attack = true
+		
 func _on_hit_box_body_exited(body):
 	if body.name == "Player":
 		attack = false
@@ -54,7 +47,8 @@ func _on_hit_box_body_exited(body):
 # send signal to attack
 func attack_player():
 	if attack == true and attack_cd == false:
-		Signals.emit_signal("attack_player", 10)
+		print("Slime attacks Player!")
+		Signals.PLAYER_DAMAGED.emit(10)  # Proper signal emission
 		attack_cd = true
 		$Attack_CD.start()
 
