@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnqgyw4lk2ibf"
-path="res://.godot/imported/0_Template_Tileset_Background1.png-ff79be918c298d7291506d565c364df7.ctex"
+uid="uid://c7n1c386nstpl"
+path="res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-421e24be7756dc6b55ae414e923bb8de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/0_Template_Tileset_Background1.png"
-dest_files=["res://.godot/imported/0_Template_Tileset_Background1.png-ff79be918c298d7291506d565c364df7.ctex"]
+source_file="res://assets/sprites/Map/1_MiniDungeon_Tileset_Background1.png"
+dest_files=["res://.godot/imported/1_MiniDungeon_Tileset_Background1.png-421e24be7756dc6b55ae414e923bb8de.ctex"]
 
 [params]
 

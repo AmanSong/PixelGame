@@ -10,10 +10,10 @@ y_sort_enabled = true
 [node name="World" parent="." instance=ExtResource("1_yqjtg")]
 
 [node name="Slime" parent="World" instance=ExtResource("3_lnu2h")]
-position = Vector2(739, 351)
+position = Vector2(660, 271)
 
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
-position = Vector2(582, 338)
+position = Vector2(587, 346)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 position = Vector2(-1, 11)
