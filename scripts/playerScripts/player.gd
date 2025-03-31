@@ -6,6 +6,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var state_machine : State_Machine = $StateMachine
 @onready var player_sprite = $PlayerSprite
 
+signal DirectionChanged(new_direction : Vector2)
+
 # when game stats
 func _ready():
 	state_machine.Initialize(self)
@@ -35,6 +37,7 @@ func SetDirection() -> bool:
 		new_dir = Vector2.UP if direction.y < 0 else Vector2.DOWN
 		
 	cardinal_direction = new_dir
+	DirectionChanged.emit(new_dir)
 	player_sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
 	return true

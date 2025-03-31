@@ -8,6 +8,7 @@ var attacking : bool = false
 @onready var idle = $"../Idle"
 @onready var player_sprite = $"../../PlayerSprite"
 @onready var audio = $"../../Audio/AudioStreamPlayer2D"
+@onready var hurt_box = $"../../Interactions/HurtBox"
 
 func Enter():
 	attacking = true
@@ -17,11 +18,16 @@ func Enter():
 	audio.stream = flameSlash_sound
 	audio.pitch_scale = randf_range(2, 3)
 	audio.play()
+	
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true 
 	pass
 	
 func Exit():
 	player_sprite.animation_finished.disconnect( EndAttack )
 	attacking = false
+	
+	hurt_box.monitoring = false
 	pass
 	
 func Process(delta:float) -> State:
