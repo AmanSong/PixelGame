@@ -2,6 +2,7 @@ class_name State_Idle extends State
 
 @onready var move : State = $"../Move"
 @onready var flame_slash : State = $"../FlameSlash"
+@onready var magic_missile = $"../MagicMissile"
 
 func Enter():
 	player.UpdateAnimation("Idle")
@@ -23,5 +24,7 @@ func Physics(delta:float) -> State:
 func HandleInput(_event:InputEvent) -> State:
 	if _event.is_action("FlameSlash"):
 		return flame_slash
+	if _event.is_action("MagicMissile"):
+		return magic_missile
 		
 	return null

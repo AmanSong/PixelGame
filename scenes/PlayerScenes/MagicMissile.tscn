@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d06wiuh1gioy1"]
+
+[ext_resource type="Script" uid="uid://db4eay0xcog5v" path="res://scripts/playerScripts/magic_missile.gd" id="1_nq1ku"]
+[ext_resource type="Texture2D" uid="uid://bf6xsaly6sja6" path="res://assets/sprites/MagicMissle.png" id="1_wint7"]
+[ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="3_rffd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wint7"]
+size = Vector2(3, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcj4f"]
+size = Vector2(23, 10)
+
+[node name="MagicMissile" type="CharacterBody2D"]
+script = ExtResource("1_nq1ku")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_wint7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -1)
+shape = SubResource("RectangleShape2D_wint7")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("3_rffd2")
+metadata/_custom_type_script = "uid://bah45ppp7w3pf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_dcj4f")
+debug_color = Color(0.839185, 0.360589, 0.360165, 0.42)

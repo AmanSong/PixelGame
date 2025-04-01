@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bs6kqyjpfmxug"]
 
 [ext_resource type="PackedScene" uid="uid://5w66fyyk3vtd" path="res://scenes/world.tscn" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://o48cu05yiwch" path="res://scenes/player.tscn" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://o48cu05yiwch" path="res://scenes/PlayerScenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/slime.tscn" id="3_lnu2h"]
 
 [node name="Game" type="Node2D"]

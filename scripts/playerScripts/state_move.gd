@@ -3,6 +3,7 @@ class_name State_Move extends State
 @export var Move_Speed : float = 100.0
 @onready var idle : State = $"../Idle"
 @onready var flame_slash : State = $"../FlameSlash"
+@onready var magic_missile = $"../MagicMissile"
 
 func Enter():
 	player.UpdateAnimation("Move")
@@ -27,5 +28,6 @@ func Physics(delta:float) -> State:
 func HandleInput(_event:InputEvent) -> State:
 	if _event.is_action("FlameSlash"):
 		return flame_slash
-		
+	if _event.is_action("MagicMissile"):
+		return magic_missile
 	return null
