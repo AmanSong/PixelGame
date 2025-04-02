@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 
 [autoload]
 
-Signals="*res://scripts/Signals.gd"
+LevelManager="*res://00_Globals/GlobalLevelManager.gd"
 
 [input]
 

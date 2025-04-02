@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://5w66fyyk3vtd"]
+[gd_scene load_steps=10 format=4 uid="uid://xb3jkf0fw0se"]
 
 [ext_resource type="Texture2D" uid="uid://dnqgyw4lk2ibf" path="res://assets/sprites/Map/0_Template_Tileset_Background1.png" id="1_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://6oc2clw8pwge" path="res://assets/sprites/Map/1_MiniDungeon_Tileset1_A.png" id="2_k0juu"]

@@ -1,15 +1,15 @@
-[gd_scene load_steps=54 format=3 uid="uid://o48cu05yiwch"]
+[gd_scene load_steps=53 format=3 uid="uid://o48cu05yiwch"]
 
 [ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/PlayerIdle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/playerScripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ckk57hbbfq75y" path="res://assets/sprites/FlameSlash.png" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://bb4iv24yw3y6q" path="res://scripts/state_machine.gd" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/playerScripts/PlayerCamera.gd" id="4_4l83k"]
 [ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/playerScripts/state_idle.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/playerScripts/state_move.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://dw1rdlu64p7pr" path="res://scripts/playerScripts/state_flameSlash.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://bryugrjw0nnit" path="res://assets/audio/Fire_Whoosh.mp3" id="8_smehm"]
 [ext_resource type="Script" uid="uid://bli5k5mo80v0f" path="res://scripts/playerScripts/state_magicMissile.gd" id="9_idnm7"]
-[ext_resource type="PackedScene" uid="uid://dtde0ulutbxkk" path="res://components/HurtBox/hurt_box.tscn" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://rewwrvboa84a" path="res://scripts/playerScripts/PlayerInteractions.gd" id="9_y4r1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
@@ -336,12 +336,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fulsm"]
 radius = 5.09902
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
-radius = 8.0
-
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
+collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_g2els")
 
@@ -356,6 +354,7 @@ shape = SubResource("CircleShape2D_fulsm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+script = ExtResource("4_4l83k")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_qhqgy")
@@ -380,13 +379,5 @@ volume_db = -10.0
 max_polyphony = 4
 
 [node name="Interactions" type="Node2D" parent="."]
+visible = false
 script = ExtResource("9_y4r1p")
-
-[node name="FlameSlash_HurtBox" parent="Interactions" instance=ExtResource("9_ur7pv")]
-collision_mask = 256
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/FlameSlash_HurtBox"]
-position = Vector2(0, 9)
-shape = SubResource("CircleShape2D_y4r1p")
-debug_color = Color(0.940375, 0.146619, 0.493363, 0.42)

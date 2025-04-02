@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwjm18jwrq86f"]
+
+[ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="1_uany7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ht26u"]
+radius = 12.0
+
+[node name="FlameSlashHurtBox" type="Area2D"]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource("1_uany7")
+metadata/_custom_type_script = "uid://bah45ppp7w3pf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ht26u")
+debug_color = Color(0.9645, 0.097823, 0.410923, 0.42)
