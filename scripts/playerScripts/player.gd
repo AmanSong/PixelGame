@@ -6,6 +6,8 @@ var direction : Vector2 = Vector2.ZERO
 @onready var state_machine : State_Machine = $StateMachine
 @onready var player_sprite = $PlayerSprite
 
+var selected_spell = "FlameSlash"
+
 signal DirectionChanged(new_direction : Vector2)
 
 # when game stats

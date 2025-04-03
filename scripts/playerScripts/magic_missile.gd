@@ -1,27 +1,22 @@
 extends CharacterBody2D
 
-@export var speed = 100
-var pos : Vector2
-var direction : Vector2
+@export var speed: float = 100
+@export var self_delete: float = 1.5
 
-var self_delete : float = 1.5
+var direction: Vector2
 
 func _ready():
-	global_position = pos
 	global_rotation_degrees = rad_to_deg(direction.angle())
-	
-	# delete itself after a certain time
-	get_tree().create_timer(self_delete).timeout.connect(delete)
+
+	# Delete itself after a certain time
+	get_tree().create_timer(self_delete).timeout.connect(queue_free)
 
 func _process(delta):
 	velocity = direction * speed
-	
 	var collision = move_and_collide(velocity * delta) 
-	if collision:  
-		delete()
+	if collision:
+		queue_free()
 		
 	move_and_slide()
 
-func delete() -> void:
-	self.queue_free()
 	
