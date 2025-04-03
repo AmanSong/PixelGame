@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d06wiuh1gioy1"]
 
-[ext_resource type="Script" uid="uid://db4eay0xcog5v" path="res://scripts/playerScripts/magic_missile.gd" id="1_nq1ku"]
+[ext_resource type="Script" uid="uid://db4eay0xcog5v" path="res://scripts/PlayerScripts/magic_missile.gd" id="1_nq1ku"]
 [ext_resource type="Texture2D" uid="uid://bf6xsaly6sja6" path="res://assets/sprites/MagicMissle.png" id="1_wint7"]
 [ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="3_rffd2"]
 

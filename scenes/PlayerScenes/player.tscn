@@ -1,16 +1,16 @@
 [gd_scene load_steps=53 format=3 uid="uid://o48cu05yiwch"]
 
 [ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/PlayerIdle.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/playerScripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/PlayerScripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ckk57hbbfq75y" path="res://assets/sprites/FlameSlash.png" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://bb4iv24yw3y6q" path="res://scripts/state_machine.gd" id="3_qhqgy"]
-[ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/playerScripts/PlayerCamera.gd" id="4_4l83k"]
-[ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/playerScripts/state_idle.gd" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/playerScripts/state_move.gd" id="5_qlg0r"]
-[ext_resource type="Script" uid="uid://dw1rdlu64p7pr" path="res://scripts/playerScripts/state_flameSlash.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/PlayerScripts/PlayerCamera.gd" id="4_4l83k"]
+[ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/PlayerScripts/state_idle.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/PlayerScripts/state_move.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://dw1rdlu64p7pr" path="res://scripts/PlayerScripts/state_flameSlash.gd" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://bryugrjw0nnit" path="res://assets/audio/Fire_Whoosh.mp3" id="8_smehm"]
-[ext_resource type="Script" uid="uid://bli5k5mo80v0f" path="res://scripts/playerScripts/state_magicMissile.gd" id="9_idnm7"]
-[ext_resource type="Script" uid="uid://rewwrvboa84a" path="res://scripts/playerScripts/PlayerInteractions.gd" id="9_y4r1p"]
+[ext_resource type="Script" uid="uid://bli5k5mo80v0f" path="res://scripts/PlayerScripts/state_magicMissile.gd" id="9_idnm7"]
+[ext_resource type="Script" uid="uid://rewwrvboa84a" path="res://scripts/PlayerScripts/PlayerInteractions.gd" id="9_y4r1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
 atlas = ExtResource("2_tuyoq")
@@ -345,9 +345,7 @@ script = ExtResource("1_g2els")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qfm1y")
-animation = &"FlameSlash_Down"
-frame = 4
-frame_progress = 1.0
+animation = &"Idle_Side"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fulsm")

@@ -12,10 +12,10 @@ var attacking : bool = false
 const FLAME_SLASH_HURTBOX = preload("res://scenes/PlayerScenes/FlameSlash_HurtBox.tscn")
 #@onready var flame_slash_hurt_box = $"../../Interactions/FlameSlash_HurtBox"
 
-func Enter():
+func enter():
 	attacking = true
-	player.UpdateAnimation("FlameSlash")
-	player_sprite.animation_finished.connect( EndAttack )
+	player.update_animation("FlameSlash")
+	player_sprite.animation_finished.connect( end_attack )
 	
 	audio.stream = flameSlash_sound
 	audio.pitch_scale = randf_range(2, 3)
@@ -42,12 +42,12 @@ func spawn_hurtbox():
 	get_tree().create_timer(0.3).timeout.connect(hurtbox.queue_free)
 	
 	
-func Exit():
-	player_sprite.animation_finished.disconnect( EndAttack )
+func exit():
+	player_sprite.animation_finished.disconnect( end_attack )
 	attacking = false
 	pass
 	
-func Process(delta:float) -> State:
+func process(_delta:float) -> State:
 	player.velocity = Vector2.ZERO
 	
 	if attacking == false:
@@ -58,11 +58,11 @@ func Process(delta:float) -> State:
 			
 	return null
 
-func Physics(delta:float) -> State:
+func physics(_delta:float) -> State:
 	return null
 	
-func HandleInput(_event:InputEvent) -> State:
+func handle_input(_event:InputEvent) -> State:
 	return null
 
-func EndAttack(  ) -> void:
+func end_attack(  ) -> void:
 	attacking = false

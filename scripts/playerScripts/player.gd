@@ -10,22 +10,23 @@ signal DirectionChanged(new_direction : Vector2)
 
 # when game stats
 func _ready():
-	state_machine.Initialize(self)
+	PlayerManager.player = self
+	state_machine.initialize(self)
 	pass
 	
 
 # when game is running
-func _process(delta):
+func _process(_delta):
 	direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	pass
 	
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
 	
 
-func SetDirection() -> bool:
+func set_direction() -> bool:
 	var new_dir : Vector2 = cardinal_direction
 	if direction == Vector2.ZERO:
 		return false
@@ -43,12 +44,12 @@ func SetDirection() -> bool:
 	return true
 
 
-func UpdateAnimation(state : String) -> void:
-	player_sprite.play(state + "_" + AnimDirection())
+func update_animation(state : String) -> void:
+	player_sprite.play(state + "_" + anim_direction())
 	pass
 	
 	
-func AnimDirection():
+func anim_direction():
 	if cardinal_direction == Vector2.DOWN:
 		return "Down"
 	elif cardinal_direction == Vector2.UP:

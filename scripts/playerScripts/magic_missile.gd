@@ -4,7 +4,7 @@ extends CharacterBody2D
 var pos : Vector2
 var direction : Vector2
 
-var self_delete : int = 1.5
+var self_delete : float = 1.5
 
 func _ready():
 	global_position = pos

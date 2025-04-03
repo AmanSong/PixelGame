@@ -7,7 +7,6 @@ func _ready():
 	pass
 	
 func UpdateDirection( new_direction : Vector2 ) -> void:
-	rotation
 	match new_direction:
 		Vector2.DOWN:
 			rotation_degrees = 0

@@ -8,7 +8,7 @@ var can_shoot: bool = true
 @onready var move : State = $"../Move"
 @onready var idle = $"../Idle"
 
-func Enter():
+func enter():
 	if !can_shoot:
 		return
 		
@@ -22,16 +22,16 @@ func Enter():
 	missile.pos = player.position + (player.cardinal_direction * 10)
 	get_parent().add_child(missile)
 
-	EndAttack()
+	end_attack()
 	get_tree().create_timer(missile_cooldown).timeout.connect(_reset_shooting)
 	pass
 	
-func Exit():
+func exit():
 	attacking = false
 	
 	pass
 	
-func Process(delta:float) -> State:
+func process(_delta:float) -> State:
 	player.velocity = Vector2.ZERO
 	
 	if attacking == false:
@@ -42,14 +42,14 @@ func Process(delta:float) -> State:
 			
 	return null
 
-func Physics(delta:float) -> State:
+func physics(_delta:float) -> State:
 	return null
 	
 	
-func HandleInput(_event:InputEvent) -> State:
+func handle_input(_event:InputEvent) -> State:
 	return null
 
-func EndAttack(  ) -> void:
+func end_attack(  ) -> void:
 	attacking = false
 	
 func _reset_shooting() -> void:
