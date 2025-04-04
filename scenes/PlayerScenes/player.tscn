@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://o48cu05yiwch"]
+[gd_scene load_steps=63 format=3 uid="uid://o48cu05yiwch"]
 
 [ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/PlayerIdle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/PlayerScripts/player.gd" id="1_g2els"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cawmae55wmt7q" path="res://components/HitBox/hit_box.gd" id="10_mn5bn"]
 [ext_resource type="Script" uid="uid://d4lwg1yu716gf" path="res://scripts/PlayerScripts/states/cast_spell_state.gd" id="11_4l83k"]
 [ext_resource type="AudioStream" uid="uid://cukn6yafdin5a" path="res://assets/audio/hit_player.wav" id="11_idnm7"]
+[ext_resource type="PackedScene" uid="uid://bwjm18jwrq86f" path="res://components/HurtBox/Slash_HurtBox.tscn" id="13_x6jsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
 atlas = ExtResource("2_tuyoq")
@@ -502,3 +503,7 @@ root_node = NodePath("../PlayerSprite")
 libraries = {
 &"": SubResource("AnimationLibrary_p1lb1")
 }
+
+[node name="Slash_HurtBox" parent="." instance=ExtResource("13_x6jsc")]
+position = Vector2(0, 11)
+monitoring = false
