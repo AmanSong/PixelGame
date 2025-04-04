@@ -1,8 +1,12 @@
 class_name State extends Node
 
 static var player : Player
+static var state_machine : State_Machine
 
 func _ready() -> void:
+	pass
+	
+func init() -> void:
 	pass
 
 func enter() -> void:

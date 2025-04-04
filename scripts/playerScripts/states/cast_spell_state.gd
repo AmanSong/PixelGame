@@ -39,15 +39,7 @@ func cast_flame_slash():
 	audio.play()
 
 	await get_tree().create_timer(0.075).timeout
-	spawn_flame_slash_hurtbox()
-
-func spawn_flame_slash_hurtbox():
-	var hurtbox = SLASH_HURT_BOX.instantiate()
-	hurtbox.global_position = player.global_position + (player.cardinal_direction * 7)
-	hurtbox.global_rotation_degrees = rad_to_deg(player.cardinal_direction.angle())
-
-	get_parent().add_child(hurtbox)
-	get_tree().create_timer(0.3).timeout.connect(hurtbox.queue_free)
+	spawn_slash_hurtbox()
 
 func cast_magic_missile():
 	if !can_cast:
@@ -66,6 +58,14 @@ func cast_magic_missile():
 	attacking = false
 	
 	get_tree().create_timer(missile_cooldown).timeout.connect(_reset_spell_casting)
+
+func spawn_slash_hurtbox():
+	var hurtbox = SLASH_HURT_BOX.instantiate()
+	hurtbox.global_position = player.global_position + (player.cardinal_direction * 7)
+	hurtbox.global_rotation_degrees = rad_to_deg(player.cardinal_direction.angle())
+
+	get_parent().add_child(hurtbox)
+	get_tree().create_timer(0.3).timeout.connect(hurtbox.queue_free)
 
 func _reset_spell_casting():
 	can_cast = true

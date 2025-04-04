@@ -1,14 +1,17 @@
-[gd_scene load_steps=51 format=3 uid="uid://o48cu05yiwch"]
+[gd_scene load_steps=62 format=3 uid="uid://o48cu05yiwch"]
 
 [ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/PlayerIdle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/PlayerScripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ckk57hbbfq75y" path="res://assets/sprites/FlameSlash.png" id="2_tuyoq"]
 [ext_resource type="Script" uid="uid://bb4iv24yw3y6q" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/PlayerScripts/PlayerCamera.gd" id="4_4l83k"]
-[ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/PlayerScripts/state_idle.gd" id="4_dqkch"]
-[ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/PlayerScripts/state_move.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/PlayerScripts/states/state_idle.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/PlayerScripts/states/state_move.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://yefpsgfl67y2" path="res://scripts/PlayerScripts/states/state_stun.gd" id="9_4l83k"]
 [ext_resource type="Script" uid="uid://rewwrvboa84a" path="res://scripts/PlayerScripts/PlayerInteractions.gd" id="9_y4r1p"]
-[ext_resource type="Script" uid="uid://d4lwg1yu716gf" path="res://scripts/PlayerScripts/cast_spell_state.gd" id="11_4l83k"]
+[ext_resource type="Script" uid="uid://cawmae55wmt7q" path="res://components/HitBox/hit_box.gd" id="10_mn5bn"]
+[ext_resource type="Script" uid="uid://d4lwg1yu716gf" path="res://scripts/PlayerScripts/states/cast_spell_state.gd" id="11_4l83k"]
+[ext_resource type="AudioStream" uid="uid://cukn6yafdin5a" path="res://assets/audio/hit_player.wav" id="11_idnm7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
 atlas = ExtResource("2_tuyoq")
@@ -163,6 +166,18 @@ atlas = ExtResource("1_3vyb7")
 region = Rect2(48, 192, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(96, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn5bn"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idnm7"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l83k"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(96, 192, 48, 48)
 
@@ -329,10 +344,105 @@ animations = [{
 "loop": true,
 "name": &"Move_Up",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn5bn")
+}],
+"loop": false,
+"name": &"Stun_Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idnm7")
+}],
+"loop": false,
+"name": &"Stun_Side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l83k")
+}],
+"loop": false,
+"name": &"Stun_Up",
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fulsm"]
-radius = 5.09902
+[sub_resource type="CircleShape2D" id="CircleShape2D_mn5bn"]
+radius = 5.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idnm7"]
+radius = 4.0
+height = 16.0
+
+[sub_resource type="Animation" id="Animation_x6jsc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_202qd"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.298484, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.25), Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1), Color(1, 1, 1, 0.75), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_idnm7")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_4l83k"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p1lb1"]
+_data = {
+&"RESET": SubResource("Animation_x6jsc"),
+&"damaged": SubResource("Animation_202qd"),
+&"default": SubResource("Animation_4l83k")
+}
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -343,10 +453,11 @@ script = ExtResource("1_g2els")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qfm1y")
-animation = &"Idle_Side"
+animation = &"Stun_Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fulsm")
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_mn5bn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -364,6 +475,9 @@ script = ExtResource("5_qlg0r")
 [node name="CastSpell" type="Node" parent="StateMachine"]
 script = ExtResource("11_4l83k")
 
+[node name="Stun" type="Node" parent="StateMachine"]
+script = ExtResource("9_4l83k")
+
 [node name="Interactions" type="Node2D" parent="."]
 visible = false
 script = ExtResource("9_y4r1p")
@@ -371,3 +485,20 @@ script = ExtResource("9_y4r1p")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -14.275
 max_polyphony = 4
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("10_mn5bn")
+metadata/_custom_type_script = "uid://cawmae55wmt7q"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_idnm7")
+debug_color = Color(0.89048, 0.283685, 0.416881, 0.42)
+
+[node name="BlinkAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../PlayerSprite")
+libraries = {
+&"": SubResource("AnimationLibrary_p1lb1")
+}

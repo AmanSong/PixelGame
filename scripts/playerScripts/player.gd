@@ -1,19 +1,28 @@
 class_name Player extends CharacterBody2D 
 
+signal DirectionChanged(new_direction : Vector2)
+signal player_damaged(hurt_box : HurtBox)
+
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
 @onready var state_machine : State_Machine = $StateMachine
-@onready var player_sprite = $PlayerSprite
+@onready var player_sprite : AnimatedSprite2D = $PlayerSprite
+@onready var hit_box : HitBox = $HitBox
+@onready var blink_animation : AnimationPlayer = $BlinkAnimation
 
 var selected_spell = "FlameSlash"
+var invunerable = false
 
-signal DirectionChanged(new_direction : Vector2)
+var health : int = 100
+var max_health : int = 100
 
 # when game stats
 func _ready():
 	PlayerManager.player = self
 	state_machine.initialize(self)
+	hit_box.Damaged.connect(_take_damage)
+	update_health(999)
 	pass
 	
 
@@ -58,3 +67,29 @@ func anim_direction():
 		return "Up"
 	else:
 		return "Side"
+
+func _take_damage(hurt_box : HurtBox) -> void:
+	if invunerable == true:
+		return
+	update_health(-hurt_box.damage)
+	
+	if health > 0:
+		player_damaged.emit(hurt_box)
+	else:
+		player_damaged.emit(hurt_box)
+		update_health(999)
+	pass
+	
+func update_health(delta : int) -> void:
+	health = clampi(health + delta, 0, max_health)
+	pass
+	
+func make_invunerable(_duration : float = 1.0) -> void:
+	invunerable = true
+	hit_box.monitoring = false
+	
+	await get_tree().create_timer(_duration).timeout
+	
+	invunerable = false
+	hit_box.monitoring = true
+	pass
