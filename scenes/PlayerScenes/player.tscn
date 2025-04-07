@@ -340,7 +340,7 @@ position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_mn5bn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 script = ExtResource("4_4l83k")
 
 [node name="StateMachine" type="Node" parent="."]
