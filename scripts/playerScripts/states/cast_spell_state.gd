@@ -5,7 +5,8 @@ class_name State_CastSpell extends State
 @export var Damage : float
 
 # generic slash hurtbox (can be re-used for close range attacks)
-const MAGIC_MISSILE = preload("res://scenes/PlayerScenes/MagicMissile.tscn")
+const MAGIC_MISSILE = preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
+const FIRE_SLASH = preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn")
 
 var attacking: bool = false
 var can_cast: bool = true
@@ -27,31 +28,48 @@ func enter():
 	elif spell == "MagicMissile" and can_cast:
 		cast_magic_missile()
 	else:
+		attacking = false
 		exit()
 
 func cast_flame_slash():
-	player.update_animation("FlameSlash")
-	player_sprite.animation_finished.connect(end_attack)
-
+	if !can_cast:
+		attacking = false
+		return
+		
+	var fireSlash = FIRE_SLASH.instantiate()
+	if manaCost(fireSlash.manaCost) == false:
+		attacking = false
+		return
+		
+	can_cast = false
+		
 	# Play sound
 	audio.stream = FIRE_WHOOSH
 	audio.pitch_scale = randf_range(2, 3)
 	audio.play()
 
-	await get_tree().create_timer(0.075).timeout
-	slash_hurt_box.monitoring = true
+	fireSlash.direction = player.cardinal_direction
+	fireSlash.global_position = player.global_position + (player.cardinal_direction * 10)
 	
-	slash_hurt_box.global_position = player.global_position + (player.cardinal_direction * 7)
-	slash_hurt_box.global_rotation_degrees = rad_to_deg(player.cardinal_direction.angle())
+	get_parent().add_child(fireSlash)
+	
+	await get_tree().create_timer(0.2).timeout
+	attacking = false
+	
+	get_tree().create_timer(fireSlash.cool_down).timeout.connect(_reset_spell_casting)
 
 
 func cast_magic_missile():
 	if !can_cast:
-		print("cd")
+		attacking = false
 		return
-		
-	can_cast = false
+
 	var missile = MAGIC_MISSILE.instantiate()
+	if manaCost(missile.manaCost) == false:
+		attacking = false
+		return
+	
+	can_cast = false
 	missile.direction = player.cardinal_direction
 	missile.global_position = player.global_position + (player.cardinal_direction * 10)
 
@@ -61,15 +79,19 @@ func cast_magic_missile():
 	await get_tree().create_timer(0.2).timeout
 	attacking = false
 	
-	get_tree().create_timer(missile_cooldown).timeout.connect(_reset_spell_casting)
+	get_tree().create_timer(missile.cool_down).timeout.connect(_reset_spell_casting)
 
-
+func manaCost(cost: int) -> bool:
+	if player.mana - cost < 0:
+		return false
+		
+	player.update_mana(cost)
+	return true
 
 func _reset_spell_casting():
 	can_cast = true
 
 func exit():
-	player_sprite.animation_finished.disconnect(end_attack)
 	attacking = false
 
 func process(_delta: float) -> State:
@@ -85,7 +107,3 @@ func physics(_delta: float) -> State:
 
 func handle_input(_event: InputEvent) -> State:
 	return null
-
-func end_attack():
-	slash_hurt_box.monitoring = false
-	attacking = false

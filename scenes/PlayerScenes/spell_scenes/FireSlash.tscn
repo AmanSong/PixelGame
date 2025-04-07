@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://ddkqpi64hglo"]
+
+[ext_resource type="Script" uid="uid://uybjrx0w833p" path="res://scenes/PlayerScenes/spell_scenes/fire_slash.gd" id="1_1kquj"]
+[ext_resource type="Texture2D" uid="uid://b27066k7bwukp" path="res://assets/sprites/FireSlash.png" id="1_fpav5"]
+[ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="2_32opl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32opl"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kquj"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8paan"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewd6l"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iyo"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af5fl"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4fuxt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32opl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kquj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8paan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewd6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af5fl")
+}],
+"loop": false,
+"name": &"FireSlash",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kquj"]
+radius = 15.0
+
+[node name="FireSlash" type="Node2D"]
+script = ExtResource("1_1kquj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4fuxt")
+animation = &"FireSlash"
+frame = 2
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource("2_32opl")
+metadata/_custom_type_script = "uid://bah45ppp7w3pf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_1kquj")
+debug_color = Color(0.886773, 0.309571, 0.305802, 0.42)

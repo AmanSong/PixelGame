@@ -11,18 +11,23 @@ var direction : Vector2 = Vector2.ZERO
 @onready var hit_box : HitBox = $HitBox
 @onready var blink_animation : AnimationPlayer = $BlinkAnimation
 
-var selected_spell = "FlameSlash"
+var index = 0
+var spells = ["FlameSlash", "MagicMissile"]
+var selected_spell = "Nothing"
 var invunerable = false
 
 var health : int = 100
 var max_health : int = 100
+var mana : int = 100
+var max_mana : int = 100
 
-# when game stats
+# when game starts
 func _ready():
 	PlayerManager.player = self
 	state_machine.initialize(self)
 	hit_box.Damaged.connect(_take_damage)
 	update_health(999)
+	PlayerHud.update_mana(mana, max_mana)
 	pass
 	
 
@@ -30,6 +35,15 @@ func _ready():
 func _process(_delta):
 	direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	direction.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+	
+	if Input.is_action_just_pressed("Cycle"):
+		if index == spells.size()-1:
+			index = 0
+		else:
+			index += 1
+			
+		selected_spell = spells[index]
+		print(selected_spell)
 	pass
 	
 	
@@ -85,6 +99,11 @@ func update_health(delta : int) -> void:
 	PlayerHud.update_health(health, max_health)
 	pass
 	
+func update_mana(cost: int) -> void:
+	mana -= clamp(cost, 0, max_mana)
+	PlayerHud.update_mana(mana, max_mana)
+	pass
+	
 func make_invunerable(_duration : float = 1.0) -> void:
 	invunerable = true
 	hit_box.monitoring = false
@@ -94,3 +113,4 @@ func make_invunerable(_duration : float = 1.0) -> void:
 	invunerable = false
 	hit_box.monitoring = true
 	pass
+	

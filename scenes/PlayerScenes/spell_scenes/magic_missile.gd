@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed: float = 100
 @export var self_delete: float = 1.5
+@export var manaCost = 25
+@export var cool_down: float = 1.5
 
 var direction: Vector2
 
