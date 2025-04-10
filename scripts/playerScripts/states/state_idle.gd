@@ -1,7 +1,6 @@
 class_name State_Idle extends State
 
 @onready var move : State = $"../Move"
-@onready var magic_missile = $"../MagicMissile"
 @onready var cast_spell = $"../CastSpell"
 
 func enter() -> void:

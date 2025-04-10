@@ -7,6 +7,7 @@ signal level_loaded
 var current_tilemap_bounds : Array[Vector2]
 var target_transition: String
 var position_offest: Vector2
+var is_transitioning = false
 
 func _ready():
 	await get_tree().process_frame
@@ -22,6 +23,7 @@ func load_new_level(
 		_target_transition: String,
 		_position_offset: Vector2
 ) -> void:
+	is_transitioning = true
 	get_tree().paused = true
 	target_transition = _target_transition
 	position_offest = _position_offset
@@ -36,5 +38,6 @@ func load_new_level(
 	get_tree().paused = false
 	
 	await get_tree().process_frame
+	is_transitioning = false
 	level_loaded.emit()
 	pass

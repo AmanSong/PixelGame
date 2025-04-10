@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://c60bq7y2ggago"]
+
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/resource_item_data.gd" id="1_jl5pt"]
+[ext_resource type="Texture2D" uid="uid://ckqgbjxlpj44g" path="res://items/sprites/potions.png" id="2_uly1j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7trl2"]
+atlas = ExtResource("2_uly1j")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+script = ExtResource("1_jl5pt")
+name = "Health Potion"
+description = "Potion of healing that restores som HP"
+texture = SubResource("AtlasTexture_7trl2")
+metadata/_custom_type_script = "uid://di4byu611qu2b"

@@ -2,7 +2,6 @@ class_name State_Move extends State
 
 @export var Move_Speed : float = 100.0
 @onready var idle : State = $"../Idle"
-@onready var magic_missile = $"../MagicMissile"
 @onready var cast_spell = $"../CastSpell"
 
 func enter():

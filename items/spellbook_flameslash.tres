@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dtfl05m2xejxu"]
+
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/resource_item_data.gd" id="1_3fjki"]
+[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://items/sprites/books.png" id="2_2gvy1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nayes"]
+atlas = ExtResource("2_2gvy1")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+script = ExtResource("1_3fjki")
+name = "Flame Slash"
+description = "Perform a flaming slash in front of you"
+texture = SubResource("AtlasTexture_nayes")
+metadata/_custom_type_script = "uid://di4byu611qu2b"

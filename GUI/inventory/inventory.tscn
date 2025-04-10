@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://cof82n5ou43e"]
+
+[ext_resource type="Texture2D" uid="uid://bblpai44qe60l" path="res://items/sprites/Slot.png" id="1_hg1hc"]
+[ext_resource type="Script" uid="uid://u24nwg4yfrmg" path="res://GUI/inventory/scripts/inventory.gd" id="1_i783x"]
+[ext_resource type="PackedScene" uid="uid://cpwrai0dcyr6s" path="res://GUI/inventory/inventory_slot.tscn" id="2_osg7n"]
+[ext_resource type="Script" uid="uid://cregq3lw1niuy" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_khxb8"]
+[ext_resource type="Resource" uid="uid://xsvwgab5656e" path="res://GUI/inventory/player_inventory.tres" id="4_quatq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osg7n"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 8.0
+content_margin_bottom = 16.0
+texture = ExtResource("1_hg1hc")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_i783x")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -109.0
+offset_right = 183.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_osg7n")
+
+[node name="Container" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+columns = 5
+script = ExtResource("3_khxb8")
+data = ExtResource("4_quatq")
+
+[node name="InventorySlot" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/Container" instance=ExtResource("2_osg7n")]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.0
+offset_top = 52.0
+offset_right = 173.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "This is an item description what the hell
+hi there"
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.454524, 0.454524, 0.454524, 0.078)

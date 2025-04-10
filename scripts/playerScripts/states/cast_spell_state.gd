@@ -75,10 +75,7 @@ func cast_magic_missile():
 
 	get_parent().add_child(missile)
 	
-	# End the attack state shortly after firing
-	await get_tree().create_timer(0.2).timeout
 	attacking = false
-	
 	get_tree().create_timer(missile.cool_down).timeout.connect(_reset_spell_casting)
 
 func manaCost(cost: int) -> bool:

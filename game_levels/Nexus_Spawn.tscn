@@ -3,8 +3,8 @@
 [ext_resource type="TileSet" uid="uid://bqxelbfifjesg" path="res://assets/sprites/Map/DungeonTiles.tres" id="1_3gi3w"]
 [ext_resource type="Script" uid="uid://m0qxga8yjw5b" path="res://game_levels/scripts/LevelTileMap.gd" id="1_ny3iu"]
 [ext_resource type="Texture2D" uid="uid://cl2wxsa6sam1v" path="res://assets/sprites/Map/Dungeon tileset.png" id="2_pbk27"]
-[ext_resource type="Texture2D" uid="uid://cvkcro4gkqntx" path="res://assets/sprites/Props/consumables.png" id="3_kvsqr"]
-[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://assets/sprites/Props/books.png" id="4_um2ke"]
+[ext_resource type="Texture2D" uid="uid://cvkcro4gkqntx" path="res://items/sprites/consumables.png" id="3_kvsqr"]
+[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://items/sprites/books.png" id="4_um2ke"]
 [ext_resource type="PackedScene" uid="uid://d0otaaldaabhi" path="res://game_levels/player_spawn.tscn" id="5_um2ke"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3gi3w"]

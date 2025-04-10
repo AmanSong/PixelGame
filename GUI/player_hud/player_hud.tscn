@@ -18,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Health_Bar" type="TextureProgressBar" parent="Control"]
+self_modulate = Color(0.85098, 0.65098, 0.662745, 1)
 layout_mode = 1
 offset_left = 19.0
 offset_top = -85.0
@@ -30,6 +31,7 @@ texture_under = ExtResource("2_oghrr")
 texture_progress = ExtResource("3_4b3j6")
 
 [node name="Mana_Bar" type="TextureProgressBar" parent="Control"]
+modulate = Color(0.47451, 1, 1, 1)
 layout_mode = 1
 offset_left = 19.0
 offset_top = -54.0

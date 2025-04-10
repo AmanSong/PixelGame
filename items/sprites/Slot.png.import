@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://desan2tpm68uv"
-path="res://.godot/imported/books.png-e322a8557891b5146ddfb5299572265b.ctex"
+uid="uid://bblpai44qe60l"
+path="res://.godot/imported/Slot.png-873270b6cb4d424b3434a575e63f87c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Props/books.png"
-dest_files=["res://.godot/imported/books.png-e322a8557891b5146ddfb5299572265b.ctex"]
+source_file="res://items/sprites/Slot.png"
+dest_files=["res://.godot/imported/Slot.png-873270b6cb4d424b3434a575e63f87c9.ctex"]
 
 [params]
 
