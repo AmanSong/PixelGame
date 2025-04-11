@@ -25,7 +25,7 @@ func Physics(_delta:float) -> State:
 	return null
 	
 func handle_input(_event:InputEvent) -> State:
-	if _event.is_action("FlameSlash"):
+	if _event.is_action("CastSpell"):
 		return cast_spell
 		
 	return null

@@ -43,7 +43,7 @@ func _process(_delta):
 			index += 1
 			
 		selected_spell = spells[index]
-		print(selected_spell)
+		print("Selected spell: " + selected_spell)
 	pass
 	
 	
@@ -100,7 +100,7 @@ func update_health(delta : int) -> void:
 	pass
 	
 func update_mana(cost: int) -> void:
-	mana -= clamp(cost, 0, max_mana)
+	mana -= cost
 	PlayerHud.update_mana(mana, max_mana)
 	pass
 	

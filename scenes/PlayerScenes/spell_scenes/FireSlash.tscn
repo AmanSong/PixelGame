@@ -75,3 +75,7 @@ metadata/_custom_type_script = "uid://bah45ppp7w3pf"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_1kquj")
 debug_color = Color(0.886773, 0.309571, 0.305802, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+max_polyphony = 2

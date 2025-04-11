@@ -5,6 +5,7 @@ signal opened
 signal closed
 
 @onready var item_description = $Control/ItemDescription
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 func _ready():
 	close_inventory()
@@ -12,7 +13,6 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_focus_next") and inventory_opened:
-		print("Hi")
 		return
 	# Handle other input events...
 
@@ -35,3 +35,7 @@ func close_inventory() -> void:
 
 func update_item_description(new_text: String) -> void:
 	item_description.text = new_text
+
+func play_audio(audio : AudioStream) -> void:
+	audio_stream_player_2d.stream = audio
+	audio_stream_player_2d.play()

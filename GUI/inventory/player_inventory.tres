@@ -1,23 +1,9 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=7 format=3 uid="uid://xsvwgab5656e"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=3 format=3 uid="uid://xsvwgab5656e"]
 
 [ext_resource type="Script" uid="uid://c1p4b352s54xu" path="res://GUI/inventory/scripts/inventory_data.gd" id="1_avp4o"]
-[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/health_potion.tres" id="2_kcj8n"]
 [ext_resource type="Script" uid="uid://do85orld7xd8c" path="res://GUI/inventory/scripts/slot_data.gd" id="3_hyr2i"]
-[ext_resource type="Resource" uid="uid://dtfl05m2xejxu" path="res://items/spellbook_flameslash.tres" id="4_hyr2i"]
-
-[sub_resource type="Resource" id="Resource_l6gtg"]
-script = ExtResource("3_hyr2i")
-item_data = ExtResource("2_kcj8n")
-quantity = 1
-metadata/_custom_type_script = "uid://do85orld7xd8c"
-
-[sub_resource type="Resource" id="Resource_sf8er"]
-script = ExtResource("3_hyr2i")
-item_data = ExtResource("4_hyr2i")
-quantity = 1
-metadata/_custom_type_script = "uid://do85orld7xd8c"
 
 [resource]
 script = ExtResource("1_avp4o")
-slots = [SubResource("Resource_l6gtg"), null, null, null, null, null, SubResource("Resource_sf8er"), null, null, null]
+slots = Array[ExtResource("3_hyr2i")]([null, null, null, null, null, null, null, null, null, null])
 metadata/_custom_type_script = "uid://c1p4b352s54xu"

@@ -1,102 +1,85 @@
 class_name State_CastSpell extends State
 
-@export var flameSlash_sound: AudioStream 
-@export var missile_cooldown: float = 1.5
-@export var Damage : float
-
-# generic slash hurtbox (can be re-used for close range attacks)
-const MAGIC_MISSILE = preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
-const FIRE_SLASH = preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn")
-
 var attacking: bool = false
-var can_cast: bool = true
 
-@onready var slash_hurt_box = $"../../Slash_HurtBox"
 @onready var move: State = $"../Move"
 @onready var idle: State = $"../Idle"
 @onready var player_sprite: AnimatedSprite2D = $"../../PlayerSprite"
-@onready var audio = $"../../AudioStreamPlayer2D"
+@onready var audio: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
 
-const FIRE_WHOOSH = preload("res://assets/audio/Fire_Whoosh.mp3")
+const NO_MP = preload("res://assets/audio/hit_01.wav")
+
+# Registry of spell names to PackedScenes
+const SPELLS = {
+	"FlameSlash": preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn"),
+	"MagicMissile": preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
+}
+# cool down for spells
+var SPELL_COOLDOWNS = {}
 
 func enter():
 	attacking = true
-	var spell = player.selected_spell  # Assume player has a spell selection system
-
-	if spell == "FlameSlash":
-		cast_flame_slash()
-	elif spell == "MagicMissile" and can_cast:
-		cast_magic_missile()
-	else:
+	var spell_name = player.selected_spell
+	var spell_scene = SPELLS.get(spell_name)
+	cast_spell(spell_scene)
+	
+	
+func cast_spell(spell_scene: PackedScene) -> void:
+	var spell = spell_scene.instantiate()
+	
+	if is_spell_on_cooldown(spell.name):
 		attacking = false
-		exit()
+		print(spell.name, " is still on cooldown.")
+		return
 
-func cast_flame_slash():
-	if !can_cast:
+	# check if we have enough mana to cast our spell
+	if !has_enough_mana(spell):
 		attacking = false
 		return
-		
-	var fireSlash = FIRE_SLASH.instantiate()
-	if manaCost(fireSlash.manaCost) == false:
-		attacking = false
-		return
-		
-	can_cast = false
-		
-	# Play sound
-	audio.stream = FIRE_WHOOSH
-	audio.pitch_scale = randf_range(2, 3)
-	audio.play()
 
-	fireSlash.direction = player.cardinal_direction
-	fireSlash.global_position = player.global_position + (player.cardinal_direction * 10)
+	#set our direction
+	spell.direction = player.cardinal_direction
+	spell.global_position = player.global_position + (player.cardinal_direction * 10)
 	
-	get_parent().add_child(fireSlash)
+	# add spell to player scene
+	get_parent().add_child(spell)
 	
-	await get_tree().create_timer(0.2).timeout
+	# set cooldown
+	set_spell_cooldown(spell.name, spell.cool_down)
+	
+	# no longer attacking
 	attacking = false
+
+func is_spell_on_cooldown(spell_name: String) -> bool:
+	var current_time = Time.get_ticks_msec() / 1000.0  # seconds
+	if SPELL_COOLDOWNS.has(spell_name) and SPELL_COOLDOWNS[spell_name] > current_time:
+		return true
+	return false
+
+func set_spell_cooldown(spell_name: String, cool_down: float) -> void:
+	var current_time = Time.get_ticks_msec() / 1000.0
+	SPELL_COOLDOWNS[spell_name] = current_time + cool_down
 	
-	get_tree().create_timer(fireSlash.cool_down).timeout.connect(_reset_spell_casting)
-
-
-func cast_magic_missile():
-	if !can_cast:
-		attacking = false
-		return
-
-	var missile = MAGIC_MISSILE.instantiate()
-	if manaCost(missile.manaCost) == false:
-		attacking = false
-		return
 	
-	can_cast = false
-	missile.direction = player.cardinal_direction
-	missile.global_position = player.global_position + (player.cardinal_direction * 10)
-
-	get_parent().add_child(missile)
-	
-	attacking = false
-	get_tree().create_timer(missile.cool_down).timeout.connect(_reset_spell_casting)
-
-func manaCost(cost: int) -> bool:
+func has_enough_mana(spell) -> bool:
+	var cost = spell.manaCost
 	if player.mana - cost < 0:
+		audio.stream = NO_MP
+		audio.pitch_scale = randf_range(2, 3)
+		audio.play()
 		return false
-		
+
 	player.update_mana(cost)
 	return true
 
-func _reset_spell_casting():
-	can_cast = true
 
 func exit():
 	attacking = false
 
 func process(_delta: float) -> State:
 	player.velocity = Vector2.ZERO
-
 	if !attacking:
 		return idle if player.direction == Vector2.ZERO else move
-
 	return null
 
 func physics(_delta: float) -> State:

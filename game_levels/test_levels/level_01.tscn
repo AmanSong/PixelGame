@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://c2wmlsywuvpc5"]
+[gd_scene load_steps=10 format=4 uid="uid://c2wmlsywuvpc5"]
 
 [ext_resource type="TileSet" uid="uid://bqxelbfifjesg" path="res://assets/sprites/Map/DungeonTiles.tres" id="1_dqbqv"]
 [ext_resource type="Script" uid="uid://cekw68hdbpdrf" path="res://game_levels/scripts/level.gd" id="1_fgco7"]
 [ext_resource type="Script" uid="uid://m0qxga8yjw5b" path="res://game_levels/scripts/LevelTileMap.gd" id="3_01ctt"]
 [ext_resource type="PackedScene" uid="uid://d0otaaldaabhi" path="res://game_levels/player_spawn.tscn" id="4_01ctt"]
 [ext_resource type="PackedScene" uid="uid://nh470s3gi067" path="res://game_levels/level_transition.tscn" id="5_xt7l2"]
+[ext_resource type="PackedScene" uid="uid://debt2kire8shc" path="res://items/item_drops/item_drop.tscn" id="6_fef8t"]
+[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/health_potion.tres" id="7_0lsd1"]
+[ext_resource type="Resource" uid="uid://dtfl05m2xejxu" path="res://items/spellbook_flameslash.tres" id="8_0lsd1"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="9_rw0so"]
 
 [node name="Level01" type="Node2D"]
 z_index = -1
@@ -35,3 +39,20 @@ position = Vector2(400, 112)
 level = "uid://bx3x3dur0p8c4"
 size = 7
 side = 1
+
+[node name="ItemDrop" parent="." instance=ExtResource("6_fef8t")]
+position = Vector2(103, 125)
+item_data = ExtResource("7_0lsd1")
+
+[node name="ItemDrop2" parent="." instance=ExtResource("6_fef8t")]
+position = Vector2(168, 78)
+scale = Vector2(0.977301, 1.00992)
+item_data = ExtResource("8_0lsd1")
+
+[node name="ItemDrop3" parent="." instance=ExtResource("6_fef8t")]
+position = Vector2(187, 151)
+item_data = ExtResource("7_0lsd1")
+
+[node name="ItemDrop4" parent="." instance=ExtResource("6_fef8t")]
+position = Vector2(220, 119)
+item_data = ExtResource("9_rw0so")

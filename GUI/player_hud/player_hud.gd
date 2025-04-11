@@ -16,7 +16,6 @@ func update_max_health(_max_hp: int) -> void:
 	pass
 
 func update_mana(_mp: int, _max_mp: int) -> void:
-	print(_mp)
 	mana_bar.max_value = _max_mp
 	mana_bar.value = _mp
 	pass

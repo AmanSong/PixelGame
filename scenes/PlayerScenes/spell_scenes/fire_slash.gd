@@ -1,9 +1,12 @@
 extends Node2D
 
-@export var manaCost = 1
+const FIRE_WHOOSH = preload("res://assets/audio/Fire_Whoosh.mp3")
+
+@export var manaCost = 10
 @export var cool_down : float = 0.5
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var hurt_box = $HurtBox
+@onready var audio = $AudioStreamPlayer2D
 
 var direction: Vector2
 
@@ -11,6 +14,11 @@ func _ready():
 	animated_sprite_2d.animation_finished.connect(finished)
 	global_rotation_degrees = rad_to_deg(direction.angle())
 	hurt_box.monitoring = false
+	
+	# Play sound
+	audio.stream = FIRE_WHOOSH
+	audio.pitch_scale = randf_range(2, 3)
+	audio.play()
 
 func _process(_delta):
 	animated_sprite_2d.play("FireSlash")
