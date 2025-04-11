@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://bvkle5nrekv4e"]
+
+[ext_resource type="Script" uid="uid://dr7hqo5rddcrf" path="res://items/scripts/weapon_data.gd" id="1_oxryh"]
+[ext_resource type="Texture2D" uid="uid://drqy7x3owrirf" path="res://assets/sprites/Props/weapons.png" id="3_xj63r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xj07"]
+atlas = ExtResource("3_xj63r")
+region = Rect2(32, 16, 16, 16)
+
+[resource]
+script = ExtResource("1_oxryh")
+name = "Sword"
+description = "A simple steel sword"
+texture = SubResource("AtlasTexture_1xj07")
+damage = 10
+range = 5
+metadata/_custom_type_script = "uid://di4byu611qu2b"

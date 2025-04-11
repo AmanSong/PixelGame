@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1407iqsxlobv"
-path="res://.godot/imported/MagicMissile_2.png-054720e0d65e093e88f9fe745e37e920.ctex"
+uid="uid://bqmymnylunpv6"
+path="res://.godot/imported/Slime_Medium_Green.png-92a2ceed81592d5046ac5b31f53fee64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MagicMissile_2.png"
-dest_files=["res://.godot/imported/MagicMissile_2.png-054720e0d65e093e88f9fe745e37e920.ctex"]
+source_file="res://assets/sprites/slimeSprites/Slime_Medium_Green.png"
+dest_files=["res://.godot/imported/Slime_Medium_Green.png-92a2ceed81592d5046ac5b31f53fee64.ctex"]
 
 [params]
 

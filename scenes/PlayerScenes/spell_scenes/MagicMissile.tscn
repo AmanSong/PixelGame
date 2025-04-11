@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://d06wiuh1gioy1"]
 
 [ext_resource type="Script" uid="uid://db4eay0xcog5v" path="res://scenes/PlayerScenes/spell_scenes/magic_missile.gd" id="1_8xjin"]
-[ext_resource type="Texture2D" uid="uid://d1407iqsxlobv" path="res://assets/sprites/MagicMissile_2.png" id="2_2bwyy"]
+[ext_resource type="Texture2D" uid="uid://d1407iqsxlobv" path="res://assets/sprites/player/MagicMissile_2.png" id="2_2bwyy"]
 [ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="3_tqdip"]
-[ext_resource type="Texture2D" uid="uid://bf6xsaly6sja6" path="res://assets/sprites/MagicMissle.png" id="4_rg4sb"]
+[ext_resource type="Texture2D" uid="uid://bf6xsaly6sja6" path="res://assets/sprites/player/MagicMissle.png" id="4_rg4sb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wint7"]
 size = Vector2(2.42188, 3)

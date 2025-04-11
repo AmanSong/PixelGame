@@ -3,6 +3,7 @@ class_name State_Move extends State
 @export var Move_Speed : float = 100.0
 @onready var idle : State = $"../Idle"
 @onready var cast_spell = $"../CastSpell"
+@onready var melee = $"../Melee"
 
 func enter():
 	player.update_animation("Move")
@@ -27,5 +28,6 @@ func Physics(_delta:float) -> State:
 func handle_input(_event:InputEvent) -> State:
 	if _event.is_action("CastSpell"):
 		return cast_spell
-		
+	if _event.is_action("Melee"):
+		return melee
 	return null

@@ -23,6 +23,7 @@ var current_save : Dictionary = {
 func save_game() -> void:
 	update_player_data()
 	update_scene_path()
+	update_item_data()
 	
 	var file := FileAccess.open(SAVE_PATH + "save.sav", FileAccess.WRITE)
 	var save_json = JSON.stringify(current_save)
@@ -39,9 +40,12 @@ func load_game() -> void:
 	
 	LevelManager.load_new_level(current_save.scene_path, "", Vector2.ZERO)
 	await LevelManager.level_load_started
+	
 	PlayerManager.set_player_position(Vector2(current_save.player.pos_x, current_save.player.pos_y))
 	PlayerManager.set_health(current_save.player.health, current_save.player.max_health)
 	PlayerManager.set_mana(current_save.player.mana, current_save.player.max_mana)
+	PlayerManager.INVENTORY_DATA.parse_saved_data(current_save.items)
+	
 	await LevelManager.level_loaded
 	
 	game_loaded.emit()
@@ -62,3 +66,6 @@ func update_scene_path() -> void:
 		if scene is Level:
 			p = scene.scene_file_path
 	current_save.scene_path = p
+
+func update_item_data() -> void:
+	current_save.items = PlayerManager.INVENTORY_DATA.get_saved_data()

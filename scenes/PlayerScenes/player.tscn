@@ -1,11 +1,13 @@
-[gd_scene load_steps=47 format=3 uid="uid://o48cu05yiwch"]
+[gd_scene load_steps=49 format=3 uid="uid://o48cu05yiwch"]
 
-[ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/PlayerIdle.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/player/PlayerIdle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/PlayerScripts/player.gd" id="1_g2els"]
+[ext_resource type="Resource" uid="uid://bvkle5nrekv4e" path="res://items/weapons/sword.tres" id="2_202qd"]
 [ext_resource type="Script" uid="uid://bb4iv24yw3y6q" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/PlayerScripts/PlayerCamera.gd" id="4_4l83k"]
 [ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/PlayerScripts/states/state_idle.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://wflihnfgtbhk" path="res://scripts/PlayerScripts/states/state_move.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://byacjmex6vovx" path="res://scripts/PlayerScripts/states/state_melee.gd" id="6_x6jsc"]
 [ext_resource type="Script" uid="uid://yefpsgfl67y2" path="res://scripts/PlayerScripts/states/state_stun.gd" id="9_4l83k"]
 [ext_resource type="Script" uid="uid://rewwrvboa84a" path="res://scripts/PlayerScripts/PlayerInteractions.gd" id="9_y4r1p"]
 [ext_resource type="Script" uid="uid://cawmae55wmt7q" path="res://components/HitBox/hit_box.gd" id="10_mn5bn"]
@@ -330,6 +332,7 @@ collision_layer = 3
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_g2els")
+weapon = ExtResource("2_202qd")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qfm1y")
@@ -349,6 +352,9 @@ script = ExtResource("3_qhqgy")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_dqkch")
 
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("6_x6jsc")
+
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource("5_qlg0r")
 
@@ -359,7 +365,6 @@ script = ExtResource("11_4l83k")
 script = ExtResource("9_4l83k")
 
 [node name="Interactions" type="Node2D" parent="."]
-visible = false
 script = ExtResource("9_y4r1p")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -386,3 +391,6 @@ libraries = {
 [node name="Slash_HurtBox" parent="." instance=ExtResource("13_x6jsc")]
 position = Vector2(0, 11)
 monitoring = false
+
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+visible = false

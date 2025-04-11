@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://c7thqklai460x"]
 
 [ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_41nng"]
-[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_68r16"]
 [ext_resource type="AudioStream" uid="uid://cp0wgms4go6ip" path="res://assets/audio/potion_drink.mp3" id="2_wv28m"]
 [ext_resource type="Script" uid="uid://6ckt1r5pligg" path="res://items/item_effects/effect_restore_mana.gd" id="3_41nng"]
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="4_41nng"]
 [ext_resource type="Texture2D" uid="uid://ckqgbjxlpj44g" path="res://items/sprites/potions.png" id="5_1rr26"]
 
-[sub_resource type="Resource" id="Resource_41nng"]
+[sub_resource type="Resource" id="Resource_wv28m"]
 script = ExtResource("3_41nng")
 restore_amount = 25
 audio = ExtResource("2_wv28m")
@@ -18,10 +18,10 @@ atlas = ExtResource("5_1rr26")
 region = Rect2(192, 16, 16, 16)
 
 [resource]
-script = ExtResource("2_68r16")
+script = ExtResource("4_41nng")
 name = "Mana Potion"
-description = "Potion of mana that restores of MP
+description = "Potion of mana that restores some MP
 (25 MP)"
 texture = SubResource("AtlasTexture_wv28m")
-effects = Array[ExtResource("1_41nng")]([SubResource("Resource_41nng")])
+effects = Array[ExtResource("1_41nng")]([SubResource("Resource_wv28m")])
 metadata/_custom_type_script = "uid://di4byu611qu2b"

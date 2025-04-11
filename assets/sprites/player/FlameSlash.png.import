@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckk57hbbfq75y"
-path="res://.godot/imported/FlameSlash.png-c8ea9a093cb58117ca185ffe425ec8ad.ctex"
+path="res://.godot/imported/FlameSlash.png-d4d601ae1d838bc46d4d2d924cc5258f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/FlameSlash.png"
-dest_files=["res://.godot/imported/FlameSlash.png-c8ea9a093cb58117ca185ffe425ec8ad.ctex"]
+source_file="res://assets/sprites/player/FlameSlash.png"
+dest_files=["res://.godot/imported/FlameSlash.png-d4d601ae1d838bc46d4d2d924cc5258f.ctex"]
 
 [params]
 

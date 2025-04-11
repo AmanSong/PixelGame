@@ -11,10 +11,13 @@ var direction : Vector2 = Vector2.ZERO
 @onready var hit_box : HitBox = $HitBox
 @onready var blink_animation : AnimationPlayer = $BlinkAnimation
 
-var index = 0
-var spells = ["FlameSlash", "MagicMissile"]
-var selected_spell = "Nothing"
 var invunerable = false
+var index = 0
+
+@export var weapon : WeaponData
+var spells = ["FlameSlash", "MagicMissile"]
+var selected_spell = spells[0]
+
 
 var health : int = 100
 var max_health : int = 100

@@ -1,18 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://debt2kire8shc"]
+[gd_scene load_steps=6 format=3 uid="uid://debt2kire8shc"]
 
 [ext_resource type="Script" uid="uid://detygrl2ux6b7" path="res://items/item_drops/item_drop.gd" id="1_54bnt"]
+[ext_resource type="Texture2D" uid="uid://cdo352hiu1xka" path="res://assets/sprites/player/Shadow.png" id="2_exwoa"]
 [ext_resource type="AudioStream" uid="uid://badexopq32xi1" path="res://assets/audio/item_pickup.mp3" id="2_ib7ty"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ib7ty"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54bnt"]
 
-[node name="ItemDrop" type="Node2D"]
+[node name="ItemDrop" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+motion_mode = 1
 script = ExtResource("1_54bnt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.317647)
+position = Vector2(0, 7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_exwoa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.9, 0.9)
 texture = SubResource("AtlasTexture_ib7ty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("CircleShape2D_54bnt")
 
 [node name="Area2D" type="Area2D" parent="."]
 scale = Vector2(0.9, 0.9)

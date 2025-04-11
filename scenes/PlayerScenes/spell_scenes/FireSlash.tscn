@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ddkqpi64hglo"]
 
 [ext_resource type="Script" uid="uid://uybjrx0w833p" path="res://scenes/PlayerScenes/spell_scenes/fire_slash.gd" id="1_1kquj"]
-[ext_resource type="Texture2D" uid="uid://b27066k7bwukp" path="res://assets/sprites/FireSlash.png" id="1_fpav5"]
+[ext_resource type="Texture2D" uid="uid://b27066k7bwukp" path="res://assets/sprites/player/FireSlash.png" id="1_fpav5"]
 [ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="2_32opl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_32opl"]

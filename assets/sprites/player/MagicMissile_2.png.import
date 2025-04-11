@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf6xsaly6sja6"
-path="res://.godot/imported/MagicMissle.png-176bf93f895d3354df1a308ea47616ab.ctex"
+uid="uid://d1407iqsxlobv"
+path="res://.godot/imported/MagicMissile_2.png-195f850e3f8f28372796cf51c551de63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MagicMissle.png"
-dest_files=["res://.godot/imported/MagicMissle.png-176bf93f895d3354df1a308ea47616ab.ctex"]
+source_file="res://assets/sprites/player/MagicMissile_2.png"
+dest_files=["res://.godot/imported/MagicMissile_2.png-195f850e3f8f28372796cf51c551de63.ctex"]
 
 [params]
 
