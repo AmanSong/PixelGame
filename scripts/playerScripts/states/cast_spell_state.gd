@@ -10,17 +10,20 @@ var attacking: bool = false
 const NO_MP = preload("res://assets/audio/hit_01.wav")
 
 # Registry of spell names to PackedScenes
-const SPELLS = {
-	"FlameSlash": preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn"),
-	"MagicMissile": preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
-}
+#const SPELLS = {
+	#"FlameSlash": preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn"),
+	#"MagicMissile": preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
+#}
+
 # cool down for spells
 var SPELL_COOLDOWNS = {}
 
 func enter():
+	if player.selected_spell == null:
+		return
+		
 	attacking = true
-	var spell_name = player.selected_spell
-	var spell_scene = SPELLS.get(spell_name)
+	var spell_scene = player.selected_spell
 	cast_spell(spell_scene)
 	
 	

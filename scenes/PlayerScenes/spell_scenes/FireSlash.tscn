@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ddkqpi64hglo"]
+[gd_scene load_steps=13 format=3 uid="uid://ddkqpi64hglo"]
 
 [ext_resource type="Script" uid="uid://uybjrx0w833p" path="res://scenes/PlayerScenes/spell_scenes/fire_slash.gd" id="1_1kquj"]
 [ext_resource type="Texture2D" uid="uid://b27066k7bwukp" path="res://assets/sprites/player/FireSlash.png" id="1_fpav5"]
@@ -57,6 +57,10 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1kquj"]
 radius = 15.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fuxt"]
+atlas = ExtResource("1_fpav5")
+region = Rect2(0, 32, 32, 32)
+
 [node name="FireSlash" type="Node2D"]
 script = ExtResource("1_1kquj")
 
@@ -79,3 +83,7 @@ debug_color = Color(0.886773, 0.309571, 0.305802, 0.42)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.0
 max_polyphony = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_4fuxt")

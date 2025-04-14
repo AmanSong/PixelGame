@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3sod2bhnae2n"]
+[gd_scene load_steps=7 format=3 uid="uid://b3sod2bhnae2n"]
 
 [ext_resource type="Script" uid="uid://c8ym2x3vqiufn" path="res://GUI/player_hud/player_hud.gd" id="1_alx7a"]
 [ext_resource type="Texture2D" uid="uid://bphfuo6a310fv" path="res://GUI/player_hud/HP_BarBackground.png" id="2_oghrr"]
 [ext_resource type="Texture2D" uid="uid://ctvrlx0aohhsr" path="res://GUI/player_hud/HP_Bar.png" id="3_4b3j6"]
 [ext_resource type="Texture2D" uid="uid://cpudgdcm2sejs" path="res://GUI/player_hud/MP_BarBackground.png" id="4_yhjvm"]
 [ext_resource type="Texture2D" uid="uid://jrjaadidfgps" path="res://GUI/player_hud/MP_Bar.png" id="5_sysqg"]
+[ext_resource type="Texture2D" uid="uid://cyqqd70206dok" path="res://GUI/player_hud/Spell_Select.png" id="6_sysqg"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_alx7a")
@@ -30,6 +31,16 @@ stretch_margin_right = 7
 texture_under = ExtResource("2_oghrr")
 texture_progress = ExtResource("3_4b3j6")
 
+[node name="Health_label" type="Label" parent="Control/Health_Bar"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 109.0
+offset_right = 49.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.892355, 0.410457, 0.551547, 1)
+theme_override_font_sizes/font_size = 19
+text = "100"
+
 [node name="Mana_Bar" type="TextureProgressBar" parent="Control"]
 modulate = Color(0.47451, 1, 1, 1)
 layout_mode = 1
@@ -42,3 +53,54 @@ stretch_margin_left = 7
 stretch_margin_right = 7
 texture_under = ExtResource("4_yhjvm")
 texture_progress = ExtResource("5_sysqg")
+
+[node name="Mana_label" type="Label" parent="Control/Mana_Bar"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 109.0
+offset_right = 49.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.515643, 0.836286, 0.841062, 1)
+theme_override_font_sizes/font_size = 19
+text = "100"
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -127.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Control"]
+self_modulate = Color(1, 1, 1, 0.7)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -110.0
+offset_right = -14.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_sysqg")
+
+[node name="SpellSprite" type="TextureRect" parent="Control/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -94.0
+offset_right = 5.0
+offset_bottom = 6.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.9, 0.9)

@@ -15,8 +15,16 @@ var invunerable = false
 var index = 0
 
 @export var weapon : WeaponData
-var spells = ["FlameSlash", "MagicMissile"]
-var selected_spell = spells[0]
+
+# dynamicaly fill array later
+var spells = {
+	"FlameSlash": preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn"),
+	"MagicMissile": preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
+}
+var spell_keys := []
+var current_spell_index := 0
+var selected_spell_name: String = ""
+var selected_spell: PackedScene = null
 
 var health : int = 100
 var max_health : int = 100
@@ -29,7 +37,9 @@ func _ready():
 	state_machine.initialize(self)
 	hit_box.Damaged.connect(_take_damage)
 	update_health(999)
+	update_selected_spell()
 	PlayerHud.update_mana(mana, max_mana)
+	PlayerHud.update_spell_icon(selected_spell)
 	pass
 	
 
@@ -39,15 +49,26 @@ func _process(_delta):
 	direction.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	
 	if Input.is_action_just_pressed("Cycle"):
-		if index == spells.size()-1:
-			index = 0
-		else:
-			index += 1
-			
-		selected_spell = spells[index]
-		print("Selected spell: " + selected_spell)
+		next_spell()
+		PlayerHud.update_spell_icon(selected_spell)
 	pass
 	
+	
+func next_spell():
+	if spell_keys.size() == 0:
+		return
+	current_spell_index = (current_spell_index + 1) % spell_keys.size()
+	selected_spell_name = spell_keys[current_spell_index]
+	selected_spell = spells[selected_spell_name]
+
+func update_selected_spell() -> void:
+	spell_keys = spells.keys()
+	if spell_keys.size() > 0:
+		selected_spell_name = spell_keys[current_spell_index]
+		selected_spell = spells[selected_spell_name]
+	else:
+		selected_spell_name = ""
+		selected_spell = null
 	
 func _physics_process(_delta):
 	move_and_slide()
@@ -101,10 +122,14 @@ func update_health(delta : int) -> void:
 	PlayerHud.update_health(health, max_health)
 	pass
 	
+	
 func update_mana(cost: int) -> void:
+	# avoid going over max mana limit when drinking potions
 	mana -= cost
+	mana = clampi(mana, mana, max_mana)
 	PlayerHud.update_mana(mana, max_mana)
 	pass
+	
 	
 func make_invunerable(_duration : float = 1.0) -> void:
 	invunerable = true
