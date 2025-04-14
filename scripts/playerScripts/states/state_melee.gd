@@ -7,7 +7,7 @@ class_name State_Melee extends State
 @onready var slash_hurt_box = $"../../Slash_HurtBox"
 
 var attacking : bool = false
-var weapon : WeaponData
+var weapon : ItemData
 const SWORD_SOUND = preload("res://assets/audio/sword_sound.mp3")
 
 func enter() -> void:

@@ -48,5 +48,9 @@ position = Vector2(112, 118)
 item_data = ExtResource("8_rw0so")
 
 [node name="ItemDrop3" parent="." instance=ExtResource("6_fef8t")]
-position = Vector2(112, 118)
+position = Vector2(139, 91)
+item_data = ExtResource("8_rw0so")
+
+[node name="ItemDrop4" parent="." instance=ExtResource("6_fef8t")]
+position = Vector2(138, 139)
 item_data = ExtResource("8_rw0so")

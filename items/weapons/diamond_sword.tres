@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://c8nwb18i55nui"]
+
+[ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_htiv6"]
+[ext_resource type="Texture2D" uid="uid://drqy7x3owrirf" path="res://assets/sprites/Props/weapons.png" id="2_htiv6"]
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_rpxgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqnac"]
+atlas = ExtResource("2_htiv6")
+region = Rect2(48, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_rpxgi")
+name = "Diamond Sword"
+description = "Sword made of diamond, sharp and strong
+(20 damage)"
+texture = SubResource("AtlasTexture_iqnac")
+effects = Array[ExtResource("1_htiv6")]([])
+damage = 20
+range = 1.1
+metadata/_custom_type_script = "uid://di4byu611qu2b"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://df4lgo5kjhlmu"]
+[gd_scene load_steps=15 format=3 uid="uid://df4lgo5kjhlmu"]
 
 [ext_resource type="Script" uid="uid://cjd6bqk4er526" path="res://scenes/Objects/TresureChest/chest.gd" id="1_hkq3d"]
 [ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/health_potion.tres" id="2_htdau"]
 [ext_resource type="Texture2D" uid="uid://blj6cyvj2ijyl" path="res://scenes/Objects/TresureChest/treasure-chest.png" id="2_kh64p"]
 [ext_resource type="Texture2D" uid="uid://ckqgbjxlpj44g" path="res://items/sprites/potions.png" id="4_htdau"]
 [ext_resource type="AudioStream" uid="uid://sen3yeed0us4" path="res://scenes/Objects/TresureChest/treasure-open.wav" id="4_l376w"]
+[ext_resource type="PackedScene" uid="uid://dj3dmfib4i8fx" path="res://components/SaveHandler/save_handler.tscn" id="6_ruxmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5owxp"]
 atlas = ExtResource("4_htdau")
@@ -197,6 +198,7 @@ _data = {
 size = Vector2(16, 8)
 
 [node name="Chest" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_hkq3d")
 item_data = ExtResource("2_htdau")
 
@@ -245,3 +247,5 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_y5k57")
+
+[node name="SaveHelper" parent="." instance=ExtResource("6_ruxmu")]

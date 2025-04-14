@@ -4,11 +4,11 @@ class_name Chest extends Node2D
 @export var item_data : ItemData : set = _set_item_data
 @export var quantity : int = 1 : set = _set_quantity
 
-
 @onready var items_sprite = $itemsSprite
 @onready var interact_area = $Area2D
 @onready var animation_player = $AnimationPlayer
 @onready var label = $itemsSprite/Label
+@onready var save_helper: SaveHandler = $SaveHelper
 
 var is_opened = false
 
@@ -20,6 +20,8 @@ func _ready():
 	
 	interact_area.area_entered.connect(_on_area_entered)
 	interact_area.area_exited.connect(_on_area_exit)
+	save_helper.data_loaded.connect(set_chest_state)
+	set_chest_state()
 	pass
 
 func _set_item_data(value: ItemData) -> void:
@@ -40,6 +42,7 @@ func _player_interact() -> void:
 	if is_opened:
 		return
 	is_opened = true
+	save_helper.set_value()
 	animation_player.play("opened_chest")
 	if item_data and quantity > 0:
 		PlayerManager.INVENTORY_DATA.add_item(item_data, quantity)
@@ -55,6 +58,7 @@ func _on_area_exit(_a : Area2D) -> void:
 func _update_texture() -> void:
 	if item_data and items_sprite:
 		items_sprite.texture = item_data.texture
+		
 	pass
 	
 func _update_label() -> void:
@@ -64,3 +68,11 @@ func _update_label() -> void:
 		else:
 			label.text = "x" + str(quantity)
 	pass
+
+func set_chest_state() -> void:
+	is_opened = save_helper.value
+	if is_opened:
+		animation_player.play("opened")
+	else:
+		animation_player.play("closed")
+		

@@ -14,7 +14,7 @@ var direction : Vector2 = Vector2.ZERO
 var invunerable = false
 var index = 0
 
-@export var weapon : WeaponData
+@export var weapon : ItemData
 
 # dynamicaly fill array later
 var spells = {

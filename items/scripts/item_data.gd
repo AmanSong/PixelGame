@@ -7,6 +7,10 @@ class_name ItemData extends Resource
 @export_category("Item use effects")
 @export var effects : Array[ItemEffect]
 
+@export_category("Weapon stats")
+@export var damage : int
+@export var range : float
+
 func use() -> bool:
 	if effects.size() == 0:
 		return false
