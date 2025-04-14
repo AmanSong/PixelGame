@@ -4,11 +4,10 @@ class_name State_Melee extends State
 @onready var idle = $"../Idle"
 @onready var weapon_sprite = $"../../WeaponSprite"
 @onready var audio = $"../../AudioStreamPlayer2D"
+@onready var slash_hurt_box = $"../../Slash_HurtBox"
 
 var attacking : bool = false
-var swing_hurtbox : HurtBox
 var weapon : WeaponData
-
 const SWORD_SOUND = preload("res://assets/audio/sword_sound.mp3")
 
 func enter() -> void:
@@ -16,16 +15,18 @@ func enter() -> void:
 	# and get the hurtbox to attack
 	weapon = player.weapon
 	weapon_sprite.texture = weapon.texture
-	swing_hurtbox = weapon_sprite.get_child(0)
+	
+	# apply weapon stats to hurtbox
+	slash_hurt_box.configure(weapon.damage, weapon.range)
 	
 	weapon_sprite.rotation_degrees = 30
 	swing_weapon()
 
 func swing_weapon() -> void:
 	weapon_sprite.visible = true
-	swing_hurtbox.monitoring = true
-	swing_hurtbox.global_position = player.global_position + (player.cardinal_direction * 10)
-	weapon_sprite.global_position = player.global_position + (player.cardinal_direction * 7)
+	slash_hurt_box.monitoring = true
+	slash_hurt_box.global_position = player.global_position + (player.cardinal_direction * 10)
+	weapon_sprite.global_position = player.global_position + (player.cardinal_direction * 9)
 	
 	var rotate_way = 180
 	match player.cardinal_direction:
@@ -58,7 +59,7 @@ func swing_weapon() -> void:
 	tween.tween_property(weapon_sprite, "rotation_degrees", rotate_way, 0.3).set_trans(Tween.TRANS_QUAD)
 
 	await tween.finished
-	swing_hurtbox.monitoring = false
+	slash_hurt_box.monitoring = false
 	weapon_sprite.visible = false
 	attacking = false
 	pass

@@ -6,4 +6,4 @@ class_name WeaponData extends Resource
 
 @export_category("Weapon stats")
 @export var damage : int
-@export var range : int
+@export var range : float

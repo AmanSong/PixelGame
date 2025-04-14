@@ -12,6 +12,8 @@ var direction: Vector2
 
 func _ready():
 	animated_sprite_2d.animation_finished.connect(finished)
+	animated_sprite_2d.apply_scale(Vector2(1.5,1.5)) 
+	hurt_box.apply_scale(Vector2(1.5,1.5))
 	global_rotation_degrees = rad_to_deg(direction.angle())
 	hurt_box.monitoring = false
 	

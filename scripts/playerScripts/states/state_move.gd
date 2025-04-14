@@ -30,4 +30,6 @@ func handle_input(_event:InputEvent) -> State:
 		return cast_spell
 	if _event.is_action("Melee"):
 		return melee
+	if _event.is_action("Interact"):
+		PlayerManager.interact_pressed.emit()
 	return null

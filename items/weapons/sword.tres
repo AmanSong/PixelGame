@@ -13,5 +13,5 @@ name = "Sword"
 description = "A simple steel sword"
 texture = SubResource("AtlasTexture_1xj07")
 damage = 10
-range = 5
+range = 1.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

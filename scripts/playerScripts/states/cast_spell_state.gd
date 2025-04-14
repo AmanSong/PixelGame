@@ -37,7 +37,7 @@ func cast_spell(spell_scene: PackedScene) -> void:
 		attacking = false
 		return
 
-	#set our direction
+	#set our direction (where its facing and where it is to our player)
 	spell.direction = player.cardinal_direction
 	spell.global_position = player.global_position + (player.cardinal_direction * 10)
 	

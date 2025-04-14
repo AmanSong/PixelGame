@@ -18,7 +18,6 @@ var index = 0
 var spells = ["FlameSlash", "MagicMissile"]
 var selected_spell = spells[0]
 
-
 var health : int = 100
 var max_health : int = 100
 var mana : int = 100

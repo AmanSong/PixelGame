@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs6kqyjpfmxug"]
+[gd_scene load_steps=6 format=3 uid="uid://bs6kqyjpfmxug"]
 
 [ext_resource type="Script" uid="uid://cekw68hdbpdrf" path="res://game_levels/scripts/level.gd" id="1_cna2h"]
-[ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/Chest.tscn" id="2_w8aak"]
+[ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/TresureChest/Chest.tscn" id="2_w8aak"]
 [ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/slime.tscn" id="3_81ql3"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="3_w8aak"]
 [ext_resource type="PackedScene" uid="uid://baubwcafv3bsc" path="res://game_levels/Nexus_Spawn.tscn" id="4_7l3xr"]
 
 [node name="Game" type="Node2D"]
@@ -11,12 +12,16 @@ script = ExtResource("1_cna2h")
 
 [node name="Chest" parent="." instance=ExtResource("2_w8aak")]
 position = Vector2(131, 216)
+quantity = 5
 
 [node name="Chest2" parent="." instance=ExtResource("2_w8aak")]
 position = Vector2(265, 214)
+item_data = ExtResource("3_w8aak")
+quantity = 25
 
 [node name="Chest5" parent="." instance=ExtResource("2_w8aak")]
 position = Vector2(128, 142)
+item_data = null
 
 [node name="Chest3" parent="." instance=ExtResource("2_w8aak")]
 position = Vector2(267, 141)

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://m0qxga8yjw5b" path="res://game_levels/scripts/LevelTileMap.gd" id="3_03khq"]
 [ext_resource type="PackedScene" uid="uid://d0otaaldaabhi" path="res://game_levels/player_spawn.tscn" id="4_03khq"]
 [ext_resource type="PackedScene" uid="uid://nh470s3gi067" path="res://game_levels/level_transition.tscn" id="5_v5mo0"]
-[ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/Chest.tscn" id="6_fegf8"]
+[ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/TresureChest/Chest.tscn" id="6_fegf8"]
 
 [node name="Level02" type="Node2D"]
 z_index = -1
