@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://m0qxga8yjw5b" path="res://game_levels/scripts/LevelTileMap.gd" id="3_vhery"]
 [ext_resource type="PackedScene" uid="uid://d0otaaldaabhi" path="res://game_levels/player_spawn.tscn" id="4_vhery"]
 [ext_resource type="PackedScene" uid="uid://nh470s3gi067" path="res://game_levels/level_transition.tscn" id="5_2sdrj"]
-[ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/slime.tscn" id="6_cu1mc"]
+[ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/Slime/slime.tscn" id="6_cu1mc"]
 
 [node name="Level03" type="Node2D"]
 z_index = -1

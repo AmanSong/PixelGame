@@ -13,7 +13,8 @@ var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invunverable : bool = false
 
-@onready var sprite2D = $AnimatedSprite2D
+@onready var sprite_2d : Sprite2D = $Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hit_box : HitBox = $HitBox
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
 
@@ -45,15 +46,12 @@ func set_direction(_new_direction : Vector2) -> bool:
 		
 	cardinal_direction = new_dir
 	direction_changed.emit(new_dir)
-	sprite2D.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	sprite_2d.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	
 	return true
 
 func update_animation(state : String) -> void:
-	if state == "Destroy":
-		sprite2D.play(state)
-	else:
-		sprite2D.play(state + "_" + anim_direction())
+	animation_player.play(state + "_" + anim_direction())
 	pass
 	
 func anim_direction() -> String:

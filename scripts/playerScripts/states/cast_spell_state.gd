@@ -58,6 +58,7 @@ func is_spell_on_cooldown(spell_name: String) -> bool:
 	if SPELL_COOLDOWNS.has(spell_name) and SPELL_COOLDOWNS[spell_name] > current_time:
 		return true
 	return false
+	
 
 func set_spell_cooldown(spell_name: String, cool_down: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0

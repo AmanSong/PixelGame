@@ -24,4 +24,6 @@ description = "Potion of healing that restores some HP
 (25 HP)"
 texture = SubResource("AtlasTexture_5owxp")
 effects = Array[ExtResource("1_0ed1v")]([SubResource("Resource_hashr")])
+damage = 0
+range = 0.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

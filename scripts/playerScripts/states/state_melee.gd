@@ -6,11 +6,19 @@ class_name State_Melee extends State
 @onready var audio = $"../../AudioStreamPlayer2D"
 @onready var slash_hurt_box = $"../../Slash_HurtBox"
 
+var attack_cd : float = 0.75
+var last_attack : float
+var current_time : float
+
 var attacking : bool = false
 var weapon : ItemData
 const SWORD_SOUND = preload("res://assets/audio/sword_sound.mp3")
 
 func enter() -> void:
+	current_time = Time.get_ticks_msec() / 1000.0
+	if last_attack + attack_cd > current_time:
+		return
+	last_attack = Time.get_ticks_msec() / 1000.0
 	# get our currently equipped weapon and load its texture onto the sprit
 	# and get the hurtbox to attack
 	weapon = player.weapon
@@ -21,8 +29,10 @@ func enter() -> void:
 	
 	weapon_sprite.rotation_degrees = 30
 	swing_weapon()
+	
 
 func swing_weapon() -> void:
+	attacking = true
 	weapon_sprite.visible = true
 	slash_hurt_box.monitoring = true
 	slash_hurt_box.global_position = player.global_position + (player.cardinal_direction * 10)
@@ -52,7 +62,7 @@ func swing_weapon() -> void:
 			rotate_way = -260
 	
 	audio.stream = SWORD_SOUND
-	#audio.pitch_scale = randf_range(1,2)
+	audio.pitch_scale = randf_range(1,2)
 	audio.play()
 	
 	var tween = create_tween()

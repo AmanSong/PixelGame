@@ -11,7 +11,7 @@ func _ready():
 	button_load.pressed.connect(_on_load_pressed)
 	pass
 	
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		if is_paused == false:
 			show_pause_menu()

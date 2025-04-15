@@ -24,4 +24,6 @@ description = "Potion of mana that restores of MP
 (25 MP)"
 texture = SubResource("AtlasTexture_wv28m")
 effects = Array[ExtResource("1_41nng")]([SubResource("Resource_41nng")])
+damage = 0
+range = 0.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

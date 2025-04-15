@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs6kqyjpfmxug"]
+[gd_scene load_steps=8 format=3 uid="uid://bs6kqyjpfmxug"]
 
 [ext_resource type="Script" uid="uid://cekw68hdbpdrf" path="res://game_levels/scripts/level.gd" id="1_cna2h"]
 [ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/TresureChest/Chest.tscn" id="2_w8aak"]
-[ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/slime.tscn" id="3_81ql3"]
+[ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/Slime/slime.tscn" id="3_81ql3"]
 [ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="3_w8aak"]
 [ext_resource type="PackedScene" uid="uid://baubwcafv3bsc" path="res://game_levels/Nexus_Spawn.tscn" id="4_7l3xr"]
 [ext_resource type="Resource" uid="uid://bvkle5nrekv4e" path="res://items/weapons/sword.tres" id="4_81ql3"]
+[ext_resource type="PackedScene" uid="uid://de4btiry4ff2n" path="res://scenes/Enemies/Goblin/goblin.tscn" id="7_7l3xr"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -36,3 +37,7 @@ position = Vector2(199, 229)
 motion_mode = 1
 
 [node name="Nexus_Spawn" parent="." instance=ExtResource("4_7l3xr")]
+
+[node name="Goblin" parent="." instance=ExtResource("7_7l3xr")]
+position = Vector2(101, 181)
+scale = Vector2(0.7, 0.7)

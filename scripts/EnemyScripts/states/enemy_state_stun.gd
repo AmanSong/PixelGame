@@ -19,28 +19,29 @@ func init() -> void:
 	pass
 
 func enter() -> void:
-	enemy.sprite2D.modulate = Color(1, 0.6, 0.6)
 	enemy.invunverable = true
 	_animation_finished = false
 	_direction = enemy.global_position.direction_to(_damage_position)
 	
 	enemy.set_direction(_direction)
 	enemy.velocity = _direction * -knockback_speed
-	enemy.update_animation(anim_name)
 	
-	enemy.sprite2D.animation_finished.connect(_on_animation_finished)
+	enemy.animation_player.animation_finished.connect(_on_animation_finished)
+	enemy.update_animation(anim_name)
 	pass
+	
 	
 func exit() -> void:
 	enemy.invunverable = false
-	enemy.sprite2D.animation_finished.disconnect(_on_animation_finished)
+	enemy.animation_player.animation_finished.disconnect(_on_animation_finished)
 	pass
+	
 	
 func process(_delta:float) -> EnemyState:
 	if _animation_finished == true:
 		return next_state
+		
 	enemy.velocity -= enemy.velocity * decelerate_speed * _delta
-	
 	return null
 
 func physics(_delta:float) -> EnemyState:
@@ -50,7 +51,5 @@ func _on_enemy_damage(hurt_box: HurtBox) -> void:
 	_damage_position = hurt_box.global_position
 	state_machine.change_state(self)
 
-func _on_animation_finished() -> void:
-	enemy.sprite2D.modulate = Color(1,1,1)
+func _on_animation_finished(_anim_name: String) -> void:
 	_animation_finished = true
-	

@@ -25,7 +25,7 @@ func enter() -> void:
 	enemy.set_direction(_direction)
 	enemy.velocity = _direction * -knockback_speed
 	enemy.update_animation(anim_name)
-	enemy.sprite2D.animation_finished.connect(_on_animation_finished)
+	enemy.animation_player.animation_finished.connect(_on_animation_finished)
 	
 	disable_hurt_box()
 	drop_items()
