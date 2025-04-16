@@ -40,6 +40,7 @@ func _ready():
 	update_selected_spell()
 	PlayerHud.update_mana(mana, max_mana)
 	PlayerHud.update_spell_icon(selected_spell)
+
 	pass
 	
 
@@ -79,7 +80,6 @@ func set_direction() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 		
-	
 	if direction.y == 0:
 		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
 	elif direction.x == 0:

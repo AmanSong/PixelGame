@@ -1,5 +1,7 @@
 class_name ItemData extends Resource
 
+@export_enum("Weapon", "Potion", "SpellBook") var type : String
+
 @export var name : String = ""
 @export_multiline var description : String = ""
 @export var texture : Texture2D
@@ -17,6 +19,6 @@ func use() -> bool:
 	
 	for effect in effects:
 		if effect:
-			effect.use()
+			effect.use(self)
 		
 	return true

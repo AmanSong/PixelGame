@@ -10,8 +10,11 @@ region = Rect2(80, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_3fjki")
+type = "SpellBook"
 name = "Flame Slash"
 description = "Perform a flaming slash in front of you"
 texture = SubResource("AtlasTexture_nayes")
 effects = Array[ExtResource("1_2gvy1")]([])
+damage = 0
+range = 0.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

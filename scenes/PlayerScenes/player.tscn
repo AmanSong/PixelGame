@@ -1,8 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://o48cu05yiwch"]
+[gd_scene load_steps=49 format=3 uid="uid://o48cu05yiwch"]
 
 [ext_resource type="Texture2D" uid="uid://dnxjmtbde2s0t" path="res://assets/sprites/player/PlayerIdle.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://fh2v422wn2op" path="res://scripts/PlayerScripts/player.gd" id="1_g2els"]
-[ext_resource type="Resource" uid="uid://c8nwb18i55nui" path="res://items/weapons/diamond_sword.tres" id="2_202qd"]
 [ext_resource type="Script" uid="uid://bb4iv24yw3y6q" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://7jlf3xul6jhu" path="res://scripts/PlayerScripts/PlayerCamera.gd" id="4_4l83k"]
 [ext_resource type="Script" uid="uid://b5hakk0e1cyps" path="res://scripts/PlayerScripts/states/state_idle.gd" id="4_dqkch"]
@@ -335,7 +334,6 @@ collision_layer = 3
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_g2els")
-weapon = ExtResource("2_202qd")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qfm1y")

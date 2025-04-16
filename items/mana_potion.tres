@@ -19,6 +19,7 @@ region = Rect2(192, 16, 16, 16)
 
 [resource]
 script = ExtResource("2_68r16")
+type = "Potion"
 name = "Mana Potion"
 description = "Potion of mana that restores of MP
 (25 MP)"

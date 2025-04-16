@@ -15,6 +15,10 @@ var weapon : ItemData
 const SWORD_SOUND = preload("res://assets/audio/sword_sound.mp3")
 
 func enter() -> void:
+	weapon = player.weapon 
+	if weapon == null:
+		printerr("No weapon equipped!")
+		return
 	current_time = Time.get_ticks_msec() / 1000.0
 	if last_attack + attack_cd > current_time:
 		return

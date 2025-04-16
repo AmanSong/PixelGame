@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://5kji5lvnlkt3"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://5kji5lvnlkt3"]
 
 [ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_jq2qb"]
+[ext_resource type="Script" uid="uid://dygghh0pq3eny" path="res://items/item_effects/effect_weapon.gd" id="2_fxuwq"]
 [ext_resource type="Texture2D" uid="uid://drqy7x3owrirf" path="res://assets/sprites/Props/weapons.png" id="2_jq2qb"]
 [ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_unx4f"]
+
+[sub_resource type="Resource" id="Resource_xgncg"]
+script = ExtResource("2_fxuwq")
+use_description = ""
+metadata/_custom_type_script = "uid://dygghh0pq3eny"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxuwq"]
 atlas = ExtResource("2_jq2qb")
@@ -10,11 +16,12 @@ region = Rect2(80, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_unx4f")
+type = "Weapon"
 name = "Gold Sword"
 description = "A shiny golden sword
 (12 Damage)"
 texture = SubResource("AtlasTexture_fxuwq")
-effects = Array[ExtResource("1_jq2qb")]([])
+effects = Array[ExtResource("1_jq2qb")]([SubResource("Resource_xgncg")])
 damage = 12
 range = 1.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

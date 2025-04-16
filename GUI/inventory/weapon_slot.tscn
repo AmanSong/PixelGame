@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvvljbo132i21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txdcb"]
+region = Rect2(0, 0, 16, 16)
+
+[node name="WeaponSlot" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_default_cursor_shape = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_txdcb")
+stretch_mode = 1

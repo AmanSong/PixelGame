@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6oc2clw8pwge"
-path="res://.godot/imported/1_MiniDungeon_Tileset1_A.png-a95d4a92699935aed84e47123accc7df.ctex"
+uid="uid://dieat8tnoxctx"
+path="res://.godot/imported/Spell_Select2.png-ae615c80be139e12fe513c4d78ddfd55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Map/1_MiniDungeon_Tileset1_A.png"
-dest_files=["res://.godot/imported/1_MiniDungeon_Tileset1_A.png-a95d4a92699935aed84e47123accc7df.ctex"]
+source_file="res://GUI/player_hud/Spell_Select2.png"
+dest_files=["res://.godot/imported/Spell_Select2.png-ae615c80be139e12fe513c4d78ddfd55.ctex"]
 
 [params]
 

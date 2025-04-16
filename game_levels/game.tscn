@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs6kqyjpfmxug"]
+[gd_scene load_steps=10 format=3 uid="uid://bs6kqyjpfmxug"]
 
 [ext_resource type="Script" uid="uid://cekw68hdbpdrf" path="res://game_levels/scripts/level.gd" id="1_cna2h"]
 [ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/TresureChest/Chest.tscn" id="2_w8aak"]
@@ -7,37 +7,43 @@
 [ext_resource type="PackedScene" uid="uid://baubwcafv3bsc" path="res://game_levels/Nexus_Spawn.tscn" id="4_7l3xr"]
 [ext_resource type="Resource" uid="uid://bvkle5nrekv4e" path="res://items/weapons/sword.tres" id="4_81ql3"]
 [ext_resource type="PackedScene" uid="uid://de4btiry4ff2n" path="res://scenes/Enemies/Goblin/goblin.tscn" id="7_7l3xr"]
+[ext_resource type="PackedScene" uid="uid://debt2kire8shc" path="res://items/item_drops/item_drop.tscn" id="8_a6bu1"]
+[ext_resource type="Resource" uid="uid://c8nwb18i55nui" path="res://items/weapons/diamond_sword.tres" id="9_uvv66"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_cna2h")
 
 [node name="Chest" parent="." instance=ExtResource("2_w8aak")]
-position = Vector2(131, 216)
+position = Vector2(352, 72)
 quantity = 5
 
 [node name="Chest2" parent="." instance=ExtResource("2_w8aak")]
-position = Vector2(265, 214)
+position = Vector2(448, 72)
 item_data = ExtResource("3_w8aak")
 quantity = 25
 
 [node name="Chest5" parent="." instance=ExtResource("2_w8aak")]
-position = Vector2(128, 142)
+position = Vector2(384, 72)
 item_data = ExtResource("4_81ql3")
 
 [node name="Chest3" parent="." instance=ExtResource("2_w8aak")]
-position = Vector2(267, 141)
+position = Vector2(416, 72)
 
 [node name="Slime" parent="." instance=ExtResource("3_81ql3")]
-position = Vector2(199, 121)
+position = Vector2(64, 144)
 motion_mode = 1
 
 [node name="Slime2" parent="." instance=ExtResource("3_81ql3")]
-position = Vector2(199, 229)
+position = Vector2(64, 192)
 motion_mode = 1
 
 [node name="Nexus_Spawn" parent="." instance=ExtResource("4_7l3xr")]
 
 [node name="Goblin" parent="." instance=ExtResource("7_7l3xr")]
-position = Vector2(101, 181)
+position = Vector2(266, 236)
 scale = Vector2(0.7, 0.7)
+
+[node name="ItemDrop" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(400, 280)
+item_data = ExtResource("9_uvv66")

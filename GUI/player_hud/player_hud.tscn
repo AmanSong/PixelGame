@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ctvrlx0aohhsr" path="res://GUI/player_hud/HP_Bar.png" id="3_4b3j6"]
 [ext_resource type="Texture2D" uid="uid://cpudgdcm2sejs" path="res://GUI/player_hud/MP_BarBackground.png" id="4_yhjvm"]
 [ext_resource type="Texture2D" uid="uid://jrjaadidfgps" path="res://GUI/player_hud/MP_Bar.png" id="5_sysqg"]
-[ext_resource type="Texture2D" uid="uid://cyqqd70206dok" path="res://GUI/player_hud/Spell_Select.png" id="6_sysqg"]
+[ext_resource type="Texture2D" uid="uid://dieat8tnoxctx" path="res://GUI/player_hud/Spell_Select2.png" id="6_sysqg"]
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_alx7a")
@@ -75,7 +75,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="TextureRect" type="TextureRect" parent="Control/Control"]
-self_modulate = Color(1, 1, 1, 0.7)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

@@ -19,6 +19,7 @@ region = Rect2(48, 16, 16, 16)
 
 [resource]
 script = ExtResource("4_0ed1v")
+type = "Potion"
 name = "Health Potion"
 description = "Potion of healing that restores some HP
 (25 HP)"

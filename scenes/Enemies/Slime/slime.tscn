@@ -573,6 +573,7 @@ _data = {
 collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_7yf2u")
+hp = 25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

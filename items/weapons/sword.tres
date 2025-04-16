@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://bvkle5nrekv4e"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://bvkle5nrekv4e"]
 
 [ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_xj63r"]
 [ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_mvxbu"]
+[ext_resource type="Script" uid="uid://dygghh0pq3eny" path="res://items/item_effects/effect_weapon.gd" id="2_qlb0x"]
 [ext_resource type="Texture2D" uid="uid://drqy7x3owrirf" path="res://assets/sprites/Props/weapons.png" id="3_xj63r"]
+
+[sub_resource type="Resource" id="Resource_g81r4"]
+script = ExtResource("2_qlb0x")
+use_description = ""
+metadata/_custom_type_script = "uid://dygghh0pq3eny"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlb0x"]
 atlas = ExtResource("3_xj63r")
@@ -10,11 +16,12 @@ region = Rect2(32, 0, 16, 16)
 
 [resource]
 script = ExtResource("2_mvxbu")
+type = "Weapon"
 name = "Sword"
 description = "Simple steel sword
 (10 Damage)"
 texture = SubResource("AtlasTexture_qlb0x")
-effects = Array[ExtResource("1_xj63r")]([])
+effects = Array[ExtResource("1_xj63r")]([SubResource("Resource_g81r4")])
 damage = 10
 range = 1.0
 metadata/_custom_type_script = "uid://di4byu611qu2b"

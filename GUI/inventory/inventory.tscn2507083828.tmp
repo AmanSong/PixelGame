@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cof82n5ou43e"]
+[gd_scene load_steps=11 format=3 uid="uid://cof82n5ou43e"]
 
 [ext_resource type="Texture2D" uid="uid://bblpai44qe60l" path="res://items/sprites/Slot.png" id="1_hg1hc"]
 [ext_resource type="Script" uid="uid://u24nwg4yfrmg" path="res://GUI/inventory/scripts/inventory.gd" id="1_i783x"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://xsvwgab5656e" path="res://GUI/inventory/player_inventory.tres" id="4_quatq"]
 [ext_resource type="PackedScene" uid="uid://cvvljbo132i21" path="res://GUI/inventory/weapon_slot.tscn" id="6_5emqn"]
 [ext_resource type="Script" uid="uid://ccjml8g14t0jf" path="res://GUI/inventory/scripts/equipped_weapon.gd" id="6_s2dgt"]
+[ext_resource type="Resource" uid="uid://bvkle5nrekv4e" path="res://items/weapons/sword.tres" id="7_5emqn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osg7n"]
 content_margin_left = 16.0
@@ -135,6 +136,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_quatq")
 [node name="WeaponSlot" parent="Control/Weapon" instance=ExtResource("6_5emqn")]
 layout_mode = 2
 script = ExtResource("6_s2dgt")
+set_weapon = ExtResource("7_5emqn")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 max_polyphony = 4
