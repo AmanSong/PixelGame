@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://df4lgo5kjhlmu"]
 
 [ext_resource type="Script" uid="uid://cjd6bqk4er526" path="res://scenes/Objects/TresureChest/chest.gd" id="1_hkq3d"]
-[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/health_potion.tres" id="2_htdau"]
+[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/Potions/health_potion.tres" id="2_htdau"]
 [ext_resource type="Texture2D" uid="uid://blj6cyvj2ijyl" path="res://scenes/Objects/TresureChest/treasure-chest.png" id="2_kh64p"]
 [ext_resource type="Texture2D" uid="uid://ckqgbjxlpj44g" path="res://items/sprites/potions.png" id="4_htdau"]
 [ext_resource type="AudioStream" uid="uid://sen3yeed0us4" path="res://scenes/Objects/TresureChest/treasure-open.wav" id="4_l376w"]

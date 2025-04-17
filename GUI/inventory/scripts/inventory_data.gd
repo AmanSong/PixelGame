@@ -12,7 +12,7 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 	# if the item already in inventory
 	for slot in slots:
 		if slot:
-			if slot.item_data == item:
+			if slot.item_data == item && slot.item_data.type == "Potion":
 				slot.quantity += count
 				emit_signal("inventory_changed")
 				return true
@@ -26,7 +26,6 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 			slots[i] = new_slot
 			emit_signal("inventory_changed")
 			return true
-
 	
 	print("Inventory full!")
 	return false;

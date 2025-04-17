@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://4vlnf27mayg4"]
+
+[ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_6ljju"]
+[ext_resource type="Script" uid="uid://be56bcfcdmker" path="res://items/item_effects/effect_spell.gd" id="2_lklpc"]
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_x7xtw"]
+[ext_resource type="PackedScene" uid="uid://d06wiuh1gioy1" path="res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn" id="3_03amd"]
+[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://items/sprites/books.png" id="3_jsgyk"]
+
+[sub_resource type="Resource" id="Resource_k2yjs"]
+script = ExtResource("2_lklpc")
+use_description = ""
+metadata/_custom_type_script = "uid://be56bcfcdmker"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nayes"]
+atlas = ExtResource("3_jsgyk")
+region = Rect2(160, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_x7xtw")
+type = "SpellBook"
+name = "Magic Missile"
+description = "Launch a missile of pure magic, piercing all enemies
+"
+texture = SubResource("AtlasTexture_nayes")
+effects = Array[ExtResource("1_6ljju")]([SubResource("Resource_k2yjs")])
+damage = 0
+range = 0.0
+spell_scene = ExtResource("3_03amd")
+metadata/_custom_type_script = "uid://di4byu611qu2b"

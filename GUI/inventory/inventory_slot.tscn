@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpwrai0dcyr6s"]
 
-[ext_resource type="Script" uid="uid://c8g8qm3v2cf6s" path="res://GUI/inventory/inventory_slot_ui.gd" id="1_ul7rj"]
+[ext_resource type="Script" uid="uid://c8g8qm3v2cf6s" path="res://GUI/inventory/scripts/inventory_slot_ui.gd" id="1_ul7rj"]
 [ext_resource type="Texture2D" uid="uid://ckqgbjxlpj44g" path="res://items/sprites/potions.png" id="1_vdcj0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vdcj0"]

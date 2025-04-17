@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://dtfl05m2xejxu"]
+
+[ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_ypxm7"]
+[ext_resource type="Script" uid="uid://be56bcfcdmker" path="res://items/item_effects/effect_spell.gd" id="2_mub7i"]
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="2_shswx"]
+[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://items/sprites/books.png" id="3_mub7i"]
+[ext_resource type="PackedScene" uid="uid://ddkqpi64hglo" path="res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn" id="3_shswx"]
+
+[sub_resource type="Resource" id="Resource_jkjoa"]
+script = ExtResource("2_mub7i")
+use_description = ""
+metadata/_custom_type_script = "uid://be56bcfcdmker"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nayes"]
+atlas = ExtResource("3_mub7i")
+region = Rect2(80, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_shswx")
+type = "SpellBook"
+name = "Fire Slash"
+description = "Perform a flaming slash in front of you"
+texture = SubResource("AtlasTexture_nayes")
+effects = Array[ExtResource("1_ypxm7")]([SubResource("Resource_jkjoa")])
+damage = 0
+range = 0.0
+spell_scene = ExtResource("3_shswx")
+metadata/_custom_type_script = "uid://di4byu611qu2b"

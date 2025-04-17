@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://b6tbrb0qmi5ht" path="res://scripts/EnemyScripts/states/enemy_state_destroy.gd" id="8_tmbma"]
 [ext_resource type="Script" uid="uid://5akggs2d3lm" path="res://scripts/EnemyScripts/drop_data/drop_data.gd" id="9_g1ckd"]
 [ext_resource type="Script" uid="uid://cawmae55wmt7q" path="res://components/HitBox/hit_box.gd" id="9_vknkv"]
-[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="10_q0w0d"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/Potions/mana_potion.tres" id="10_q0w0d"]
 [ext_resource type="AudioStream" uid="uid://c22nkknear1bf" path="res://assets/audio/Slime_hit.mp3" id="13_aun5d"]
 [ext_resource type="AudioStream" uid="uid://bo7vyn1xj15rm" path="res://assets/audio/hit_00.wav" id="14_wtl6k"]
 

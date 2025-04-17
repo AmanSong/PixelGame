@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cicnanakfkvkf" path="res://scripts/EnemyScripts/states/enemy_state_stun.gd" id="8_gngd1"]
 [ext_resource type="Script" uid="uid://b6tbrb0qmi5ht" path="res://scripts/EnemyScripts/states/enemy_state_destroy.gd" id="9_ip6g3"]
 [ext_resource type="Script" uid="uid://5akggs2d3lm" path="res://scripts/EnemyScripts/drop_data/drop_data.gd" id="10_5a8ke"]
-[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="11_ppbva"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/Potions/mana_potion.tres" id="11_ppbva"]
 [ext_resource type="Script" uid="uid://bah45ppp7w3pf" path="res://components/HurtBox/hurt_box.gd" id="12_grgix"]
 [ext_resource type="Script" uid="uid://cawmae55wmt7q" path="res://components/HitBox/hit_box.gd" id="13_fvwum"]
 [ext_resource type="Texture2D" uid="uid://ix0tl8d37kdd" path="res://assets/sprites/Enemies/DestroySmoke.png" id="14_k1dh2"]

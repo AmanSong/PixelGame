@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs6kqyjpfmxug"]
+[gd_scene load_steps=13 format=3 uid="uid://bs6kqyjpfmxug"]
 
 [ext_resource type="Script" uid="uid://cekw68hdbpdrf" path="res://game_levels/scripts/level.gd" id="1_cna2h"]
 [ext_resource type="PackedScene" uid="uid://df4lgo5kjhlmu" path="res://scenes/Objects/TresureChest/Chest.tscn" id="2_w8aak"]
 [ext_resource type="PackedScene" uid="uid://dfi6nxu64a2no" path="res://scenes/Enemies/Slime/slime.tscn" id="3_81ql3"]
-[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="3_w8aak"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/Potions/mana_potion.tres" id="3_w8aak"]
 [ext_resource type="PackedScene" uid="uid://baubwcafv3bsc" path="res://game_levels/Nexus_Spawn.tscn" id="4_7l3xr"]
 [ext_resource type="Resource" uid="uid://bvkle5nrekv4e" path="res://items/weapons/sword.tres" id="4_81ql3"]
 [ext_resource type="PackedScene" uid="uid://de4btiry4ff2n" path="res://scenes/Enemies/Goblin/goblin.tscn" id="7_7l3xr"]
 [ext_resource type="PackedScene" uid="uid://debt2kire8shc" path="res://items/item_drops/item_drop.tscn" id="8_a6bu1"]
 [ext_resource type="Resource" uid="uid://c8nwb18i55nui" path="res://items/weapons/diamond_sword.tres" id="9_uvv66"]
+[ext_resource type="Resource" uid="uid://dtfl05m2xejxu" path="res://items/spellbooks/fireslash_SB.tres" id="10_sw15v"]
+[ext_resource type="Resource" uid="uid://4vlnf27mayg4" path="res://items/spellbooks/magic_missile_SB.tres" id="11_d8vl2"]
+[ext_resource type="Resource" uid="uid://5kji5lvnlkt3" path="res://items/weapons/golden_sword.tres" id="12_d8vl2"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -47,3 +50,23 @@ scale = Vector2(0.7, 0.7)
 [node name="ItemDrop" parent="." instance=ExtResource("8_a6bu1")]
 position = Vector2(400, 280)
 item_data = ExtResource("9_uvv66")
+
+[node name="ItemDrop2" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(360, 280)
+item_data = ExtResource("10_sw15v")
+
+[node name="ItemDrop3" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(440, 280)
+item_data = ExtResource("11_d8vl2")
+
+[node name="ItemDrop4" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(440, 256)
+item_data = ExtResource("12_d8vl2")
+
+[node name="ItemDrop5" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(400, 256)
+item_data = ExtResource("4_81ql3")
+
+[node name="ItemDrop6" parent="." instance=ExtResource("8_a6bu1")]
+position = Vector2(360, 256)
+item_data = ExtResource("11_d8vl2")

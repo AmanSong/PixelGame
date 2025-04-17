@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d0otaaldaabhi" path="res://game_levels/player_spawn.tscn" id="4_01ctt"]
 [ext_resource type="PackedScene" uid="uid://nh470s3gi067" path="res://game_levels/level_transition.tscn" id="5_xt7l2"]
 [ext_resource type="PackedScene" uid="uid://debt2kire8shc" path="res://items/item_drops/item_drop.tscn" id="6_fef8t"]
-[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/mana_potion.tres" id="7_0lsd1"]
-[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/health_potion.tres" id="8_rw0so"]
+[ext_resource type="Resource" uid="uid://c7thqklai460x" path="res://items/Potions/mana_potion.tres" id="7_0lsd1"]
+[ext_resource type="Resource" uid="uid://c60bq7y2ggago" path="res://items/Potions/health_potion.tres" id="8_rw0so"]
 
 [node name="Level01" type="Node2D"]
 z_index = -1

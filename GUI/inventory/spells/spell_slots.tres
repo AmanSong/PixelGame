@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpellsData" load_steps=3 format=3 uid="uid://c1bfhnw5x7wo7"]
+
+[ext_resource type="Script" uid="uid://fsmp62kco3ao" path="res://GUI/inventory/spells/spells_data.gd" id="1_86wkg"]
+[ext_resource type="Script" uid="uid://do85orld7xd8c" path="res://GUI/inventory/scripts/slot_data.gd" id="2_jqiba"]
+
+[resource]
+script = ExtResource("1_86wkg")
+slots = Array[ExtResource("2_jqiba")]([null, null, null, null, null])
+metadata/_custom_type_script = "uid://c1p4b352s54xu"

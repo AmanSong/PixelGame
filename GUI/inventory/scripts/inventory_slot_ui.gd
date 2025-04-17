@@ -31,12 +31,10 @@ func item_unfocused() -> void:
 
 func item_pressed() -> void:
 	if slot_data and slot_data.item_data:
-		
-		if slot_data.item_data.type == "Weapon":
-			pass
-		
+
 		var was_used = slot_data.item_data.use()
 		if was_used == false:
 			return
+			
 		slot_data.quantity -= 1
 		label.text = str(slot_data.quantity)

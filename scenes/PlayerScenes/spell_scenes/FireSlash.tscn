@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddkqpi64hglo"]
+[gd_scene load_steps=14 format=3 uid="uid://ddkqpi64hglo"]
 
 [ext_resource type="Script" uid="uid://uybjrx0w833p" path="res://scenes/PlayerScenes/spell_scenes/fire_slash.gd" id="1_1kquj"]
 [ext_resource type="Texture2D" uid="uid://b27066k7bwukp" path="res://assets/sprites/player/FireSlash.png" id="1_fpav5"]
@@ -61,8 +61,12 @@ radius = 15.0
 atlas = ExtResource("1_fpav5")
 region = Rect2(0, 32, 32, 32)
 
-[node name="FireSlash" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8paan"]
+
+[node name="FireSlash" type="CharacterBody2D"]
 script = ExtResource("1_1kquj")
+manaCost = 20
+cool_down = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4fuxt")
@@ -87,3 +91,7 @@ max_polyphony = 2
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture = SubResource("AtlasTexture_4fuxt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8paan")
+disabled = true
