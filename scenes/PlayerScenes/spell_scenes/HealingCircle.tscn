@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://m20dyyoa40qp"]
+
+[ext_resource type="Script" uid="uid://c54frk5d4sbwy" path="res://scenes/PlayerScenes/spell_scenes/healing_circle.gd" id="1_kadnn"]
+[ext_resource type="Texture2D" uid="uid://ds4drwinl5tk7" path="res://assets/sprites/player/healingCircle.png" id="2_1lrl5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_db6ok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kadnn"]
+radius = 40.0
+
+[node name="HealingCircle" type="CharacterBody2D"]
+z_index = -1
+y_sort_enabled = true
+script = ExtResource("1_kadnn")
+manaCost = 30
+cool_down = 15.0
+self_delete = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_db6ok")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+modulate = Color(0.776726, 0.94807, 0.667561, 1)
+shape = SubResource("CircleShape2D_kadnn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.533333, 1, 0.392157, 0.188235)
+position = Vector2(-7.45058e-09, -3.55271e-15)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_1lrl5")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

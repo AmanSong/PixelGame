@@ -16,9 +16,9 @@ collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_8xjin")
 speed = 120.0
-self_delete = null
-cool_down = 5.0
 manaCost = 20
+cool_down = 5.0
+self_delete = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, 0)
@@ -33,6 +33,7 @@ shape = SubResource("RectangleShape2D_wint7")
 collision_layer = 0
 collision_mask = 272
 script = ExtResource("3_tqdip")
+damage = 20
 metadata/_custom_type_script = "uid://bah45ppp7w3pf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]

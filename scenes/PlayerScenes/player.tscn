@@ -336,6 +336,7 @@ motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_qfm1y")
 animation = &"Idle_Down"
 

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://jljdywv65ypu"]
+
+[ext_resource type="Script" uid="uid://bi4lxulgjql41" path="res://items/item_effects/item_effect.gd" id="1_8xdqm"]
+[ext_resource type="Script" uid="uid://be56bcfcdmker" path="res://items/item_effects/effect_spell.gd" id="2_4a50v"]
+[ext_resource type="Script" uid="uid://di4byu611qu2b" path="res://items/scripts/item_data.gd" id="3_11c70"]
+[ext_resource type="PackedScene" uid="uid://m20dyyoa40qp" path="res://scenes/PlayerScenes/spell_scenes/HealingCircle.tscn" id="4_8xdqm"]
+[ext_resource type="Texture2D" uid="uid://desan2tpm68uv" path="res://items/sprites/books.png" id="5_obc0d"]
+
+[sub_resource type="Resource" id="Resource_jkjoa"]
+script = ExtResource("2_4a50v")
+use_description = ""
+metadata/_custom_type_script = "uid://be56bcfcdmker"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nayes"]
+atlas = ExtResource("5_obc0d")
+region = Rect2(128, 0, 16, 16)
+
+[resource]
+script = ExtResource("3_11c70")
+type = "SpellBook"
+name = "Healing Circle"
+description = "Conjure a small circle of healing around you"
+texture = SubResource("AtlasTexture_nayes")
+effects = Array[ExtResource("1_8xdqm")]([SubResource("Resource_jkjoa")])
+damage = 0
+range = 0.0
+spell_scene = ExtResource("4_8xdqm")
+metadata/_custom_type_script = "uid://di4byu611qu2b"

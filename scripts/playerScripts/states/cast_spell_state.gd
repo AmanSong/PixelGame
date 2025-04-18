@@ -9,12 +9,6 @@ var attacking: bool = false
 
 const NO_MP = preload("res://assets/audio/hit_01.wav")
 
-# Registry of spell names to PackedScenes
-#const SPELLS = {
-	#"FlameSlash": preload("res://scenes/PlayerScenes/spell_scenes/FireSlash.tscn"),
-	#"MagicMissile": preload("res://scenes/PlayerScenes/spell_scenes/MagicMissile.tscn")
-#}
-
 # cool down for spells
 var SPELL_COOLDOWNS = {}
 
@@ -39,7 +33,7 @@ func cast_spell(spell_scene: PackedScene) -> void:
 	if !has_enough_mana(spell):
 		attacking = false
 		return
-
+		
 	#set our direction (where its facing and where it is to our player)
 	spell.direction = player.cardinal_direction
 	spell.global_position = player.global_position + (player.cardinal_direction * 10)
