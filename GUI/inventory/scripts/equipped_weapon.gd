@@ -24,7 +24,7 @@ func equip_weapon(weapon_data: ItemData) -> void:
 	# If a weapon is already equipped, unequip it first
 	if set_weapon != null:
 		unequip_weapon()
-
+		
 	set_weapon = weapon_data
 	texture_rect.texture = weapon_data.texture
 	PlayerManager.player.weapon = weapon_data
@@ -39,3 +39,18 @@ func unequip_weapon() -> void:
 	if PlayerManager.INVENTORY_DATA.add_item(set_weapon):
 		PlayerManager.player.weapon = null
 		set_weapon = null
+
+func save_weapon() -> String:
+	if set_weapon != null:
+		return set_weapon.resource_path
+	return ""
+
+
+func load_weapon(saved_data: String) -> void:
+	# reset the weapon slot first
+	set_weapon = null
+	if saved_data == "":
+		return
+	var weapon = load(saved_data) as ItemData
+	if weapon:
+		equip_weapon(weapon)

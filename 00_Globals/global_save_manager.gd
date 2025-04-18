@@ -15,6 +15,8 @@ var current_save : Dictionary = {
 		pos_x = 0,
 		pos_y = 0
 	},
+	weapon = [],
+	spells = [],
 	items = [],
 	persistence = [],
 	quests = [],
@@ -45,6 +47,8 @@ func load_game() -> void:
 	PlayerManager.set_health(current_save.player.health, current_save.player.max_health)
 	PlayerManager.set_mana(current_save.player.mana, current_save.player.max_mana)
 	PlayerManager.INVENTORY_DATA.parse_saved_data(current_save.items)
+	PlayerManager.SPELL_DATA.parse_saved_data(current_save.spells)
+	PlayerManager.get_weapon_slot().load_weapon(current_save.weapon)
 	
 	await LevelManager.level_loaded
 	
@@ -69,6 +73,8 @@ func update_scene_path() -> void:
 
 func update_item_data() -> void:
 	current_save.items = PlayerManager.INVENTORY_DATA.get_saved_data()
+	current_save.spells = PlayerManager.SPELL_DATA.get_saved_spell_data()
+	current_save.weapon = PlayerManager.get_weapon_slot().save_weapon()
 	
 func add_persistent_value(value: String) -> void:
 	if check_persistent_value(value) == false:

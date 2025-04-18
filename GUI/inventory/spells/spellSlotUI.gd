@@ -16,5 +16,7 @@ func set_slot_data(value : SlotData) -> void:
 
 func remove_spell() -> void:
 	if slot_data and slot_data.item_data:
-		PlayerManager.INVENTORY_DATA.add_item(slot_data.item_data)
+		var added = PlayerManager.INVENTORY_DATA.add_item(slot_data.item_data)
+		if added == false:
+			return
 		slot_data.quantity = 0
