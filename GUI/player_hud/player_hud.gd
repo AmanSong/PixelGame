@@ -30,6 +30,7 @@ func update_mana(_mp: int, _max_mp: int) -> void:
 var spell_texture_cache := {}
 func update_spell_icon(spell_scene: PackedScene) -> void:
 	if !spell_scene:
+		spell_sprite.texture = null
 		return
 
 	var scene_path = spell_scene.resource_path

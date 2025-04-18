@@ -22,6 +22,7 @@ func add_spell(item: ItemData, count: int = 1) -> bool:
 			new_slot.quantity = count
 			new_slot.changed.connect(slot_changed)
 			slots[i] = new_slot
+			add_spells_to_player(new_slot)
 			emit_signal("spellslots_changed")
 			return true
 
@@ -33,6 +34,7 @@ func connect_slots() -> void:
 	for slot in slots:
 		if slot:
 			slot.changed.connect(slot_changed)
+			add_spells_to_player(slot)
 	pass
 
 func slot_changed() -> void:
@@ -44,7 +46,18 @@ func slot_changed() -> void:
 			
 	emit_signal("spellslots_changed")
 	pass
+	
+	
+func add_spells_to_player(spell: SlotData) -> void:
+	# Add the spell to player's spell dictionary
+	var spell_name := spell.item_data.name
+	var spell_scene := spell.item_data.spell_scene
 
+	if spell_scene and not PlayerManager.player.spells.has(spell_name):
+		PlayerManager.player.spells[spell_name] = spell_scene
+	PlayerManager.player.update_selected_spell()
+	
+	
 #gather all spels in inventory into an array
 func get_saved_spell_data() -> Array:
 	var item_save : Array = []

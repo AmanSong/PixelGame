@@ -19,4 +19,8 @@ func remove_spell() -> void:
 		var added = PlayerManager.INVENTORY_DATA.add_item(slot_data.item_data)
 		if added == false:
 			return
+		if PlayerManager.player.spells.has(slot_data.item_data.name):
+			PlayerManager.player.spells.erase(slot_data.item_data.name)
 		slot_data.quantity = 0
+		
+	PlayerManager.player.update_selected_spell()
